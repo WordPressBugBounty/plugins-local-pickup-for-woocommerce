@@ -1,0 +1,1 @@
+# plugins-local-pickup-for-woocommerce
