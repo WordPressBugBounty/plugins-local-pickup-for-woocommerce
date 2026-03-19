@@ -1,0 +1,7 @@
+/**
+ * All of the CSS for your admin-specific footer functionality should be
+ * included in this file.
+ */
+
+#wpfooter p#footer-left{float: none;text-align: center;}
+#wpfooter p#footer-left a,.fs-modal a{color: var(--dotstore-primary)}

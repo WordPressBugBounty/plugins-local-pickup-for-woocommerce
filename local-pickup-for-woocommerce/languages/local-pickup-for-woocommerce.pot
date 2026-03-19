@@ -1,0 +1,1801 @@
+# Copyright (C) 2026 theDotstore
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Local Pickup for WooCommerce 1.1.2\n"
+"Report-Msgid-Bugs-To: https://www.multidots.com/contact/\n"
+"POT-Creation-Date: 2026-03-16 08:12:04+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Sagar Jariwala <sagar.jariwala@multidots.com>\n"
+"Language-Team: Sagar Jariwala <sagar.jariwala@multidots.com>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: India\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: admin/class-local-pickup-woocommerce-admin.php:137
+msgid "Please upload {ext} file"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:151
+msgid "All products"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:152
+msgid "All categories"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:153
+msgid "Both product types"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:156
+msgid "Do you really want to proceed with the deletion?"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:175
+msgid "Dotstore Plugins"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:282
+msgid "Rules Per Page"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:385
+msgid ""
+"<strong>We need your support</strong> to keep updating and improving the "
+"plugin. Please <a href=\"%1$s\" target=\"_blank\">help us by leaving a good "
+"review</a> :) Thanks!"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:493
+msgid ""
+"Choose whether local pickup is available for this product, or if local "
+"pickup is the only type of shipment possible."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:496
+#: admin/class-local-pickup-woocommerce-admin.php:547
+#: admin/class-local-pickup-woocommerce-admin.php:586
+msgid "Pickup Availability"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:549
+#: admin/class-local-pickup-woocommerce-admin.php:590
+msgid ""
+"Choose whether local pickup is possible for this category of products, or "
+"if local pickup is the only type of shipment possible. Individual products "
+"may override this setting."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:660
+msgid ""
+"2 or more categories are conflicting pickup availability setting. Please "
+"check and resolve it else this product will work as pickup only."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:715
+#: includes/class-local-pickup-woocommerce-orders.php:457
+msgid "Pickup Location"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:750
+msgid "Rule ID is not there!"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:763
+#: admin/class-local-pickup-woocommerce-admin.php:775
+msgid "Status not changed! Error occurred!"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:779
+msgid "Status has been changed!"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:796
+msgid "Pickup location has been created."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:798
+msgid "Pickup location has been updated."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:800
+msgid "Pickup location has been deleted."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:802
+msgid "Pickup location has been duplicated."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:804
+msgid "Pickup location has been disabled."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:806
+msgid "Pickup location has been enabled."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:809
+msgid "There was an error with saving data."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:811
+msgid "There was an error with security check."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:968
+msgid "No search term provided."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:997
+#. translators: Placeholders: %1$s - product name, %2$d product ID
+msgid "%1$s(#%2$d)"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1088
+msgid "Data has been Exported in CSV!"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1105
+msgid "Data has been Exported in JSON!"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1110
+msgid "No Pickup Locations found matching the criteria to export."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1474
+#. translators: Placeholders: %s - import file error while uploading
+msgid "There was a problem uploading the file: %s"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1479
+msgid "Please upload a file to import"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1486
+#. translators: Placeholders: %s - import file type (extension) name
+msgid "Please upload a valid %s extension file"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1542
+#. translators: Placeholders: %s - import file type (extension) name
+msgid "Blank  %s file uploaded."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1545
+msgid "Pickup location data has been Imported!"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1564
+msgid "The file uploaded exceeds the maximum file size allowed."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1566
+msgid "The file was only partially uploaded. Please try again."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1568
+msgid "No file was uploaded."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1570
+msgid "Missing a temporary folder to store the file. Please contact your host."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1572
+msgid ""
+"Failed to write file to disk. Perhaps a permissions error, please contact "
+"your host."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1574
+msgid "A PHP Extension stopped the file upload. Please contact your host."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1576
+msgid "Unknown error."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1800
+msgid "Location:"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1808
+msgid "Address:"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1816
+msgid "Phone:"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1829
+msgid "Date:"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1839
+#. translators: %1$s - the formatted date, %2$s - the formatted time
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1853
+msgid "Items:"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1884
+msgid "Export Pickup Details"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:1905
+msgid "You do not have sufficient permissions"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:2017
+msgid ""
+"%2$s%1$s for WooCommerce%3$s does not support block based cart and checkout "
+"page. This may impact the shopper experience. Please use the default "
+"shortcode based cart and checkout page."
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-appointments.php:152
+#: admin/class-local-pickup-woocommerce-pickup-location-appointments.php:373
+msgid "Could not calculate first available pickup time with lead time %1$: %2$s"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-fee-adjustment.php:265
+msgid "Price"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-fee-adjustment.php:271
+msgid "Discount"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-fee-adjustment.php:277
+msgid "Fixed"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-fee-adjustment.php:283
+msgid "Percentage"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-pickup-hours.php:164
+#. translators: Placeholders: %1$s - %2$s opening hours as time from-to
+msgid "from %1$s to %2$s"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-pickup-hours.php:172
+#. translators: Conjunction used to join together the penultimate and last item
+#. of a list of opening hours for pickup.
+msgid "and"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-pickup-hours.php:294
+msgid "Add"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-pickup-hours.php:299
+msgid "Expand"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-schedule-adjustment.php:125
+#: admin/partials/dslpfw-local-pickup-settings.php:709
+msgid "Minute(s)"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-schedule-adjustment.php:130
+msgid "Hour(s)"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-schedule-adjustment.php:135
+msgid "Day(s)"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-schedule-adjustment.php:140
+msgid "Week(s)"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-pickup-location-schedule-adjustment.php:145
+msgid "Month(s)"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:49
+#: includes/class-local-pickup-woocommerce-shipping.php:125
+msgid "Title"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:57
+#: includes/class-local-pickup-woocommerce-orders.php:458
+msgid "Address"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:58
+#: admin/partials/dslpfw-pickup-location-add-new.php:140
+#: admin/partials/dslpfw-pickup-location-list-page.php:481
+msgid "City"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:59
+#: admin/partials/dslpfw-pickup-location-list-page.php:482
+msgid "State"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:60
+#: admin/partials/dslpfw-pickup-location-list-page.php:483
+msgid "Country"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:61
+#: admin/partials/dslpfw-pickup-location-add-new.php:164
+#: admin/partials/dslpfw-pickup-location-list-page.php:484
+msgid "Postcode"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:62
+#: admin/partials/dslpfw-pickup-location-add-new.php:93
+msgid "Status"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:63
+msgid "Date"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:253
+msgid "Trash"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:285
+msgid "N/A"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:300
+msgid "Pickup location not found."
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:342
+msgid "#"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:344
+msgid "Edit"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:345
+#: admin/list-tables/class-pickup-location-list-table.php:484
+msgid "Delete"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:346
+msgid "Duplicate"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:482
+msgid "Disable"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:483
+#: includes/class-local-pickup-woocommerce-shipping.php:119
+msgid "Enable"
+msgstr ""
+
+#: admin/list-tables/class-pickup-location-list-table.php:570
+msgid "Pickup location title"
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:41
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:48
+msgid "Unlock Premium Features with a %s%% Discount!"
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:52
+msgid "Unlock Premium Features Today!"
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:56
+msgid ""
+"Unlock a world of possibilities for your WooCommerce store with our Premium "
+"Local Pickup plugin!"
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:58
+msgid "Select public holidays to exclude from the pickup schedule."
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:59
+msgid "Set specific products or categories based pickup locations."
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:60
+msgid "Adjust fee or discount for selected pickup location."
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:61
+msgid "Define default lead times and deadlines for pickups."
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:65
+#: admin/partials/header/plugin-header.php:71
+#: admin/partials/header/plugin-header.php:76
+msgid "Upgrade Now"
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:18
+msgid "How to Get Started"
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:19
+msgid "Welcome to Local Pickup Plugin"
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:20
+msgid ""
+"Thank you for choosing our top-rated WooCommerce Local Pickup plugin. Our "
+"user-friendly interface makes setting up local pickup straightforward."
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:24
+msgid ""
+"To help you get started, watch the quick tour video on the right. For more "
+"help, explore our help documents or visit our %s for detailed video "
+"tutorials."
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:25
+msgid "YouTube channel"
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:30
+msgid "Setup Local Pickup"
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:31
+msgid "Read the Setup Guide"
+msgstr ""
+
+#: admin/partials/dslpfw-get-started-page.php:35
+msgid "Plugin Tour"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:17
+msgid "Import / Export Pickup Locations"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:23
+msgid "Export Pickup Locations"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:24
+msgid ""
+"Export the pickup locations and it's settings from this site as a "
+".json/.csv file. This allows you to easily import the configuration into "
+"another site."
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:31
+#: admin/partials/dslpfw-import-export-page.php:60
+msgid "JSON"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:36
+#: admin/partials/dslpfw-import-export-page.php:65
+msgid "CSV"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:39
+msgid "Export"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:52
+msgid "Import Pickup Locations"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:53
+msgid ""
+"Import the pickup locations and it's settings from a .json/.csv file. This "
+"file can be obtained by exporting the settings on another site using the "
+"form above."
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:68
+msgid "No file selected"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:69
+msgid "Choose"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:73
+msgid "Import"
+msgstr ""
+
+#: admin/partials/dslpfw-import-export-page.php:85
+msgid "Sorry! You are not allowed to perform this action."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:226
+#: includes/class-local-pickup-woocommerce-shipping.php:61
+msgid "DS Local Pickup"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:269
+msgid "Local Pickup Settings"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:269
+msgid ""
+"This section will allow customer to enable or disable shipping method with "
+"title changes."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:274
+msgid "Enable Shipping"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:275
+msgid "Enable or disable shipping method."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:289
+msgid "Shipping Title"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:290
+msgid "The shipping method title that customers see during checkout."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:300
+#: includes/class-local-pickup-woocommerce-shipping.php:131
+msgid "Display Country"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:301
+msgid ""
+"Local pickup will show on these selected countries, blank will show on all "
+"countries"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:315
+msgid ""
+"Hold down the Ctrl (windows) or Command (Mac) button to select multiple "
+"countries."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:326
+msgid "Cart & Checkout Settings"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:326
+msgid "Determine how pickup locations are shown to the customer at checkout."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:335
+#: admin/partials/dslpfw-local-pickup-settings.php:364
+#: admin/partials/dslpfw-local-pickup-settings.php:390
+msgid "Shipping Zones"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:336
+#: admin/partials/dslpfw-local-pickup-settings.php:366
+#: admin/partials/dslpfw-local-pickup-settings.php:392
+msgid "Select the shipping zones where the local pickup will be available."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:346
+#: admin/partials/dslpfw-local-pickup-settings.php:375
+#: admin/partials/dslpfw-local-pickup-settings.php:401
+msgid "Select Shipping Zones"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:413
+msgid "Choosing Locations"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:414
+msgid "Where to give option for pickup location."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:419
+msgid "Allow customers to choose location per order"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:420
+msgid "Allow customers to choose location per product"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:431
+#: admin/partials/dslpfw-local-pickup-settings.php:477
+#: admin/partials/dslpfw-local-pickup-settings.php:527
+msgid "Cart Item Handling"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:432
+#: admin/partials/dslpfw-local-pickup-settings.php:479
+#: admin/partials/dslpfw-local-pickup-settings.php:529
+msgid ""
+"Apply pickup location for whole package or diffrent package based of "
+"product wise selection"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:437
+#: admin/partials/dslpfw-local-pickup-settings.php:484
+#: admin/partials/dslpfw-local-pickup-settings.php:534
+msgid "Automatically group cart items into as few packages as possible"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:438
+#: admin/partials/dslpfw-local-pickup-settings.php:485
+#: admin/partials/dslpfw-local-pickup-settings.php:535
+msgid "Allow customers to toggle pickup or shipping for each item in the cart"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:445
+#: admin/partials/dslpfw-local-pickup-settings.php:492
+#: admin/partials/dslpfw-local-pickup-settings.php:542
+msgid "Default Handling"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:446
+#: admin/partials/dslpfw-local-pickup-settings.php:494
+#: admin/partials/dslpfw-local-pickup-settings.php:544
+msgid ""
+"Choose whether cart items will be set as to be shipped or for pickup when "
+"customers first arrive at the cart or checkout page."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:451
+#: admin/partials/dslpfw-local-pickup-settings.php:499
+#: admin/partials/dslpfw-local-pickup-settings.php:549
+msgid "Pick up items"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:452
+#: admin/partials/dslpfw-local-pickup-settings.php:500
+#: admin/partials/dslpfw-local-pickup-settings.php:550
+msgid "Ship items"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:459
+#: admin/partials/dslpfw-local-pickup-settings.php:507
+#: admin/partials/dslpfw-local-pickup-settings.php:557
+msgid "Location Sort Order"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:460
+#: admin/partials/dslpfw-local-pickup-settings.php:509
+#: admin/partials/dslpfw-local-pickup-settings.php:559
+msgid ""
+"Choose how the pickup location will be listed to the customer at checkout. "
+"Default is the default sort order determined by WordPress."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:465
+#: admin/partials/dslpfw-local-pickup-settings.php:514
+#: admin/partials/dslpfw-local-pickup-settings.php:564
+msgid "Default"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:466
+#: admin/partials/dslpfw-local-pickup-settings.php:515
+#: admin/partials/dslpfw-local-pickup-settings.php:565
+msgid "Alphabetical by location name"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:467
+#: admin/partials/dslpfw-local-pickup-settings.php:516
+#: admin/partials/dslpfw-local-pickup-settings.php:566
+msgid "Most recently added location"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:581
+#: admin/partials/dslpfw-pickup-location-add-new.php:209
+#: admin/partials/dslpfw-pickup-location-add-new.php:420
+#: admin/partials/dslpfw-pickup-location-add-new.php:571
+msgid "Pickup Appointments Settings"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:581
+msgid ""
+"This section will allow the customer to schedule an appointment for pickup "
+"at a selected pickup location on checkout."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:586
+msgid "Mode"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:587
+msgid "Choose whether date and time selection is required for customer interaction."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:592
+msgid "Do not offer appointments"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:593
+msgid "Allow scheduled appointments"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:598
+msgid "Require scheduled appointments"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:602
+#: admin/partials/dslpfw-local-pickup-settings.php:607
+msgid "Require scheduled appointments 🔒"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:617
+msgid "Time range"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:618
+msgid ""
+"Customers select preferred time slots within specified intervals for "
+"scheduling convenience."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:635
+msgid "Default Pickup Hours"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:636
+msgid ""
+"Without set pickup hours, scheduled appointments might disable location "
+"selection; default schedules can be customized for each pickup point."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:650
+#: admin/partials/dslpfw-local-pickup-settings.php:686
+msgid "Default Holiday Dates"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:651
+#: admin/partials/dslpfw-local-pickup-settings.php:688
+msgid ""
+"Exclude specific calendar days for pickup appointments; excluded dates can "
+"be customized for each pickup location."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:661
+#: admin/partials/dslpfw-local-pickup-settings.php:701
+msgid "Default Lead Time"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:662
+#: admin/partials/dslpfw-local-pickup-settings.php:703
+msgid ""
+"Set a default lead time to determine the earliest pickup date. Set to zero "
+"for no lead time. The lead time can be overridden by individual pickup "
+"locations."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:672
+#: admin/partials/dslpfw-local-pickup-settings.php:718
+msgid "Default Deadline"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:673
+#: admin/partials/dslpfw-local-pickup-settings.php:720
+msgid ""
+"Set a default deadline to determine the lastest pickup date. The deadline "
+"is based on calendar days and does consider pickup hours and holidays. Set "
+"to zero for no deadline. The deadline can be overridden by individual "
+"pickup locations."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:710
+#: admin/partials/dslpfw-local-pickup-settings.php:726
+msgid "hour(s)"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:711
+#: admin/partials/dslpfw-local-pickup-settings.php:727
+msgid "day(s)"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:728
+msgid "month(s)"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:744
+#: admin/partials/dslpfw-pickup-location-add-new.php:293
+#: admin/partials/dslpfw-pickup-location-add-new.php:492
+#: admin/partials/dslpfw-pickup-location-add-new.php:643
+msgid "Fee Adjustment Settings"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:744
+msgid ""
+"This section will configure for when a customer opts for order pickup, set "
+"a default cost or discount, and ensure appropriate taxation is applied."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:749
+#: admin/partials/dslpfw-pickup-location-add-new.php:298
+#: admin/partials/dslpfw-pickup-location-add-new.php:497
+#: admin/partials/dslpfw-pickup-location-add-new.php:648
+msgid "Fee Adjustment"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:750
+msgid ""
+"Zero default adjustment means no preset changes. Adjustments can be made "
+"per pickup location if needed."
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:760
+msgid "Pickup Location Tax"
+msgstr ""
+
+#: admin/partials/dslpfw-local-pickup-settings.php:761
+msgid ""
+"Apply the tax rate based on the pickup location than for the customer's "
+"given address"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:28
+msgid "Update Location"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:52
+msgid "Add Location"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:87
+msgid "Pickup Address"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:94
+msgid "Enable or Disable this pickup address."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:107
+msgid "Pickup Title"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:108
+msgid "Title for pickup location for easily differentiate"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:118
+#: admin/partials/dslpfw-pickup-location-list-page.php:479
+msgid "Address Line 1"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:119
+#: admin/partials/dslpfw-pickup-location-add-new.php:130
+msgid "This address will shown as this pickup location's address"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:129
+#: admin/partials/dslpfw-pickup-location-list-page.php:480
+msgid "Address Line 2"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:141
+msgid "This city will shown as this pickup location's city"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:151
+msgid "Country & state"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:152
+msgid ""
+"This state & country combination will shown as this pickup location's state "
+"& country"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:165
+msgid "This postcode will shown as this pickup location's postcode"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:175
+#: includes/class-local-pickup-woocommerce-orders.php:461
+msgid "Phone"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:176
+msgid "This phone number will shown as this pickup location's contact details"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:186
+msgid "Note or Details"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:187
+msgid ""
+"If we want to show any extra details about pickup location then we can use "
+"this note"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:214
+#: admin/partials/dslpfw-pickup-location-add-new.php:425
+#: admin/partials/dslpfw-pickup-location-add-new.php:576
+msgid "Pickup Hours"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:215
+#: admin/partials/dslpfw-pickup-location-add-new.php:426
+#: admin/partials/dslpfw-pickup-location-add-new.php:577
+msgid ""
+"Without set pickup hours, scheduled appointments might disable location "
+"selection; The will be overridden default configuration."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:233
+#: admin/partials/dslpfw-pickup-location-add-new.php:441
+#: admin/partials/dslpfw-pickup-location-add-new.php:592
+msgid "Holiday Dates"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:234
+#: admin/partials/dslpfw-pickup-location-add-new.php:442
+#: admin/partials/dslpfw-pickup-location-add-new.php:593
+msgid ""
+"Exclude specific calendar days for pickup appointments. The will be "
+"overridden default configuration."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:252
+#: admin/partials/dslpfw-pickup-location-add-new.php:457
+#: admin/partials/dslpfw-pickup-location-add-new.php:608
+msgid "Lead Time"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:253
+#: admin/partials/dslpfw-pickup-location-add-new.php:458
+#: admin/partials/dslpfw-pickup-location-add-new.php:609
+msgid ""
+"Set a default lead time to determine the earliest pickup date. Set to zero "
+"for no lead time. The will be overridden default configuration."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:271
+#: admin/partials/dslpfw-pickup-location-add-new.php:473
+#: admin/partials/dslpfw-pickup-location-add-new.php:624
+msgid "Deadline"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:272
+#: admin/partials/dslpfw-pickup-location-add-new.php:474
+#: admin/partials/dslpfw-pickup-location-add-new.php:625
+msgid ""
+"Set a default deadline to determine the latest pickup date. The deadline is "
+"based on calendar days and does  consider pickup hours and holidays. Set to "
+"zero for no deadline. The will be overridden default configuration."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:299
+#: admin/partials/dslpfw-pickup-location-add-new.php:498
+#: admin/partials/dslpfw-pickup-location-add-new.php:649
+msgid ""
+"By enabling a fee adjustment for this pickup location, any default value "
+"will be overridden when customers collect their purchases at this location."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:320
+#: admin/partials/dslpfw-pickup-location-add-new.php:516
+#: admin/partials/dslpfw-pickup-location-add-new.php:667
+msgid "Filter for Locations"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:327
+#: admin/partials/dslpfw-pickup-location-add-new.php:523
+#: admin/partials/dslpfw-pickup-location-add-new.php:674
+msgid "Product"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:328
+#: admin/partials/dslpfw-pickup-location-add-new.php:524
+#: admin/partials/dslpfw-pickup-location-add-new.php:675
+msgid ""
+"Either allow any product to be picked up at this location, or restrict this "
+"location to only allow pickup of certain products."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:346
+msgid "Select products&hellip;"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:365
+#: admin/partials/dslpfw-pickup-location-add-new.php:539
+#: admin/partials/dslpfw-pickup-location-add-new.php:690
+msgid "Category"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:366
+#: admin/partials/dslpfw-pickup-location-add-new.php:540
+#: admin/partials/dslpfw-pickup-location-add-new.php:691
+msgid "Products belonging to the chosen categories are available at this location."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:384
+msgid "Select product categories&hellip;"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-add-new.php:408
+#: admin/partials/dslpfw-pickup-location-add-new.php:558
+#: admin/partials/dslpfw-pickup-location-add-new.php:709
+#. translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag
+msgid ""
+"In order to limit the products available at this location, you will need to "
+"allow customers to choose a location for each product in their cart. "
+"%1$sClick here%2$s to check setting."
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-list-page.php:355
+#: admin/partials/header/plugin-header.php:91
+msgid "Pickup Locations"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-list-page.php:356
+msgid "Add New"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-list-page.php:362
+#. translators: %s is replaced with "string" which show searched string
+msgid "Search results for &#8220;%s&#8221;"
+msgstr ""
+
+#: admin/partials/dslpfw-pickup-location-list-page.php:368
+msgid "Search"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:23
+msgid "Welcome! 🤗"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:25
+msgid ""
+"Plugin allows store owners to set up local pickup spots, giving customers "
+"the freedom to choose their ideal pickup location with ease!"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:28
+#: admin/partials/dslpfw-plugin-setup-wizard.php:58
+#: admin/partials/dslpfw-plugin-setup-wizard.php:71
+#: admin/partials/dslpfw-plugin-setup-wizard.php:116
+msgid "Continue"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:40
+#. translators: Placeholders: %s - plugin name from global constant
+msgid "Help us build a better \"%s\" Plugin!"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:41
+msgid ""
+"Get improved features and faster fixes by sharing non-sensitive data via "
+"usage-tracking. This will help us make the plugin more compatible with your "
+"site. No personal data is tracked or stored."
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:43
+#: admin/partials/dslpfw-plugin-setup-wizard.php:51
+msgid "Yes, count me in!"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:48
+msgid "Never miss an important update"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:49
+msgid ""
+"Opt-in to get email notifications for security & feature updates and to "
+"share some important WooCommerce updates. This will help us make the plugin "
+"more compatible with your version and better at doing what you need it to. "
+"No personal data is tracked or stored."
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:65
+#: admin/partials/dslpfw-plugin-setup-wizard.php:67
+msgid "Quick Tour"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:78
+msgid "You are all set, almost!"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:83
+msgid "Would you mind telling how did you hear about us?"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:85
+msgid "Select One"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:86
+msgid "Social Media"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:87
+msgid "Search Engine"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:88
+msgid "LearnWoo"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:89
+msgid "WPLift"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:90
+msgid "WPBeginner"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:91
+msgid "Do the Woo"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:92
+msgid "WP Mayor"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:93
+msgid "Astra"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:94
+msgid "WPExplorer"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:95
+msgid "Medium"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:96
+msgid "Others"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:103
+msgid "Be our friend on"
+msgstr ""
+
+#: admin/partials/dslpfw-plugin-setup-wizard.php:120
+msgid "Done"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:53
+msgid "Flexible Pickup Locations"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:54
+msgid ""
+"Enable customers to select from various nearby pickup points, enhancing "
+"convenience and flexibility."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:57
+msgid ""
+"Customers can conveniently select from various nearby pickup points, such "
+"as designated stores or lockers."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:60
+msgid ""
+"They can choose their preferred location, whether it's a local grocery "
+"store or a nearby pickup locker."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:61
+msgid ""
+"This option allows customers to avoid shipping charges by opting for local "
+"pickup near a participating store."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:65
+msgid "Public Holidays Selection"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:66
+msgid ""
+"Choose standard public holidays to exclude from the pickup schedule, "
+"ensuring accurate availability."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:69
+msgid ""
+"A bakery owner can prevent scheduling on public holidays to avoid "
+"inconvenience."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:72
+msgid ""
+"In the plugin settings, they can select standard holidays like New Year's "
+"Day, Christmas, and Thanksgiving."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:73
+msgid ""
+"This ensures the delivery schedule is adjusted automatically on these "
+"dates, preventing customers from booking deliveries."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:77
+msgid "Product Filter for Pickup Location"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:78
+msgid ""
+"For better management, filter and assign specific products or categories to "
+"designated pickup locations."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:81
+msgid ""
+"A grocery store can offer specific pickup locations based on customer "
+"purchase products."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:84
+msgid ""
+"In the plugin settings, the store owner configures pickup points for "
+"certain products or categories, like fresh produce or dairy."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:85
+msgid ""
+"Customers buying items from these categories are presented with relevant "
+"pickup locations, ensuring easy access to the products they need."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:89
+msgid "Fee Adjustment for Pickup Location"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:90
+msgid "Modify fees based on chosen pickup locations, allowing precise cost control."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:93
+msgid ""
+"A retailer can adjust pickup fees based on the selected store by the "
+"customer."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:96
+msgid ""
+"In the plugin settings, they can set a $0 pickup fee for Store A and a $3 "
+"fee for Store B."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:97
+msgid ""
+"This setup ensures customers choosing Store A incur no extra charges, while "
+"those opting for Store B are charged an additional $3, allowing the "
+"retailer to cover specific handling costs."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:101
+msgid "Discounts Adjustment for Pickup Location"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:102
+msgid ""
+"Adjust discounts according to the selected pickup location to offer "
+"tailored pricing."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:105
+msgid ""
+"A retailer can offer pickup discounts based on the store the customer "
+"selects."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:108
+msgid ""
+"In the plugin settings, they configure a $0 discount for Store A and a $5 "
+"discount for Store B."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:109
+msgid ""
+"This ensures customers selecting Store A receive no discount, while those "
+"choosing Store B enjoy a $5 discount, providing an incentive to use "
+"specific locations."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:113
+msgid "Schedule Appointment for Pickup"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:114
+msgid ""
+"Let customers book specific pickup times, enhancing service precision and "
+"customer satisfaction."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:117
+msgid ""
+"Customers can schedule a specific pickup time during checkout by selecting "
+"the \"Schedule Pickup\" option and choosing a preferred date and time."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:120
+msgid ""
+"The system ensures the selected slot is available and schedules the order "
+"accordingly."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:121
+msgid ""
+"This guarantees that customer can pick up their order at their convenience "
+"without waiting. If no date and time are selected, the system prompts the "
+"customer to choose one."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:125
+msgid "Set Pickup Lead Time and Deadline"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:126
+msgid ""
+"Define default lead times and pick-up deadlines, ensuring a smooth and "
+"timely process."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:129
+msgid ""
+"Establishing lead time and deadlines helps manage order preparation and "
+"scheduling."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:132
+msgid ""
+"The lead time is the period between when an order is placed and when it's "
+"ready for pickup."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:133
+msgid ""
+"Setting a deadline defines the maximum number of days customers can "
+"schedule pickups in advance."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:134
+msgid ""
+"This ensures orders are prepared on time and prevents scheduling too far "
+"ahead, aiding in logistics and inventory management."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:138
+msgid "Set Pickup Locations Ordering"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:139
+msgid ""
+"Arrange pickup locations alphabetically in the dropdown menu for easy and "
+"quick selection."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:142
+msgid ""
+"Customers can select a pickup location from an alphabetically ordered "
+"dropdown list during checkout."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:145
+msgid ""
+"This arrangement makes it easy for them to find and choose their preferred "
+"location, streamlining the checkout process and enhancing the user "
+"experience."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:146
+msgid ""
+"Displaying pickup locations in a logical order ensures customers can "
+"quickly locate the most convenient option."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:153
+msgid "Upgrade to Unlock Premium Features"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:154
+msgid ""
+"Upgrade to the premium version to access advanced features and simplify "
+"local pickup operations!"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:158
+msgid "Discover Our Top Key Features"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:171
+msgid "Close"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:215
+msgid "Personal Plan"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:217
+msgid "Personal"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:223
+msgid "month"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:224
+msgid "Pay $%s today. Renews in 12 months."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:228
+msgid "1 site"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:229
+msgid "Great for website owners with a single WooCommerce Store"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:232
+#: admin/partials/dslpfw-upgrade-dashboard.php:332
+msgid "Get The Premium Version"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:233
+msgid "Trusted by 100,000+ store owners and WP experts!"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:238
+msgid "14-Day money-back guarantee"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:241
+msgid "14-Day Satisfaction Guarantee"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:242
+msgid ""
+"You are fully protected by our 100% Satisfaction Guarantee. If over the "
+"next 14 days you are unhappy with our plugin or have an issue that we are "
+"unable to resolve, we'll happily consider offering a 100% refund of your "
+"money."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:246
+msgid "Exactly what I needed for local pickups!"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:248
+msgid ""
+"We have over 20 pickup locations, and this <strong>plugin made it easy to "
+"set up multiple pickup locations</strong>. I highly <strong>recommend it "
+"for implementing local pickup</strong> options on your WooCommerce site."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:255
+msgid "Customer Profile Image"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:258
+msgid "Nick Ogle"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:269
+msgid "Verified Customer"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:278
+msgid "FAQs"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:282
+msgid "Do you offer support for the plugin? What’s it like?"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:288
+msgid ""
+"Yes! You can read our %s or submit a %s. We are very responsive and strive "
+"to do our best to help you."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:289
+msgid "knowledge base"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:290
+msgid "support ticket"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:299
+msgid "What payment methods do you accept?"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:302
+msgid ""
+"You can pay with your credit card using Stripe checkout. Or your PayPal "
+"account."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:307
+msgid "What’s your refund policy?"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:310
+msgid "We have a 14-day money-back guarantee."
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:315
+msgid "I have more questions…"
+msgstr ""
+
+#: admin/partials/dslpfw-upgrade-dashboard.php:321
+msgid "No problem, we’re happy to help! Please reach out at %s."
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:38
+msgid "Plugin LOGO"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:49
+#: includes/class-local-pickup-woocommerce.php:487
+msgid "Support"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:54
+msgid "Suggest"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:59
+msgid "Help"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:67
+msgid "My Account"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:88
+msgid "Global Settings"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:94
+#: includes/class-local-pickup-woocommerce.php:477
+msgid "Settings"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:100
+msgid "License"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:106
+msgid "Get Premium"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:129
+msgid "Import / Export"
+msgstr ""
+
+#: admin/partials/header/plugin-header.php:130
+msgid "Shop Plugins"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-orders.php:465
+msgid "Note"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-orders.php:471
+msgid "Pickup Date"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-orders.php:476
+#: includes/class-local-pickup-woocommerce-orders.php:484
+msgid "Pickup Time"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-orders.php:507
+msgid "Items to Pickup"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-products.php:73
+msgid "Use category preferences"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-products.php:74
+msgid "Available for pickup"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-products.php:75
+msgid "Not available for pickup"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-products.php:76
+msgid "Required for pickup"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-shipping.php:62
+msgid ""
+"Local Pickup is a shipping method which allows customers to pick up their "
+"orders at a specified pickup location."
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-shipping.php:127
+msgid "Local Pickup"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-shipping.php:685
+#. translators: Placeholder: %s - local pickup discount amount
+msgid "%s (discount!)"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce.php:482
+msgid "Docs"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce.php:728
+msgid "Activate Plugin"
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:153
+msgid "Choose a pickup date"
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:523
+msgid "Enter your address to see all available shipping options."
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:986
+#: public/partials/class-package-pickup-appointment-field.php:304
+#. translators: Placeholder: %s - day of the week name
+msgid "Opening hours for pickup on %s:"
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:1085
+#. translators: Placeholder: %s - shipping method title (e.g. Local Pickup)
+msgid "%s discount"
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:1225
+#. translators: Placeholder: %s - user assigned name for Local Pickup
+#. WooCommerce shipping method
+msgid "Please select a pickup location if you intend to use %s as shipping method."
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:1233
+#. translators: Placeholder: %s - user assigned name for Local Pickup
+#. WooCommerce shipping method
+msgid "Please choose a date to schedule a pickup when using %s shipping method."
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:1271
+msgid ""
+"Oops! That appointment time is no longer available. Please select a new "
+"appointment."
+msgstr ""
+
+#: public/partials/class-cart-item-handling-toggle.php:98
+#. translators: Placeholders: %1$s - opening <a> link tag, %2$s - closing </a>
+#. link tag
+msgid "This item is set for shipping. %1$sClick here to pickup this item%2$s."
+msgstr ""
+
+#: public/partials/class-cart-item-handling-toggle.php:100
+#. translators: Placeholders: %1$s - opening <a> link tag, %2$s - closing </a>
+#. link tag
+msgid "This item is set for pickup. %1$sClick here to ship this item%2$s."
+msgstr ""
+
+#: public/partials/class-cart-item-handling-toggle.php:127
+msgid "Shipping may be available."
+msgstr ""
+
+#: public/partials/class-cart-item-handling-toggle.php:128
+msgid "Enter or update your full address to see if shipping options are available."
+msgstr ""
+
+#: public/partials/class-cart-item-handling-toggle.php:128
+msgid ""
+"Enter your full address on the checkout page to see if shipping is "
+"available."
+msgstr ""
+
+#: public/partials/class-cart-item-handling-toggle.php:143
+msgid "This item can only be shipped"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:141
+#. translators: Placeholder: %s - outputs an "(optional)" note if pickup
+#. appointments are optional
+msgid "Schedule a pickup appointment %s"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:141
+msgid "(optional)"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:143
+msgid "Required"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:146
+#: public/partials/class-package-pickup-appointment-field.php:149
+msgid "Schedule a pickup appointment (optional)"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:267
+#. translators: Placeholder: %1$s - day of the week name, %2$s - location
+#. timezone
+msgid "Available pickup times on %1$s (all times in %2$s):"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:269
+msgid "the location timezone"
+msgstr ""
+
+#: public/partials/class-package-pickup-items-field.php:107
+#. translators: Placeholders: %1$s product name, %2$s product quantity - e.g.
+#. "Product name x2"
+msgid "%1$s &times; %2$s"
+msgstr ""
+
+#: public/partials/class-package-pickup-location-field.php:127
+#: public/partials/class-pickup-location-field.php:160
+#. translators: Placeholder: %s - the name of the pickup location
+#. translators: Placeholder: %s - pickup location name
+msgid "Pickup Location: %s"
+msgstr ""
+
+#: public/partials/class-package-pickup-location-field.php:134
+msgid "Note:"
+msgstr ""
+
+#: public/partials/class-package-pickup-location-field.php:142
+msgid "Please choose a pickup location"
+msgstr ""
+
+#: public/partials/class-pickup-location-field.php:168
+#. translators: Placeholder: %s - pickup location name
+msgid "Available for pickup at: %s"
+msgstr ""
+
+#: public/partials/class-pickup-location-field.php:199
+msgid "Search locations&hellip;"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:711
+msgctxt "Post Type General Name"
+msgid "Pickup Locations"
+msgstr ""
+
+#: admin/class-local-pickup-woocommerce-admin.php:712
+msgctxt "Post Type Singular Name"
+msgid "Pickup Location"
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:760
+#. translators: Placeholders: %1$s - shipping method name, %2$d package count
+#. number
+msgctxt "shipping packages"
+msgid "%1$s %2$d"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:169
+#: public/partials/class-package-pickup-appointment-field.php:183
+#: public/partials/class-package-pickup-appointment-field.php:197
+msgctxt "Placeholder text for the datepicker field"
+msgid "Pickup Date"
+msgstr ""
+
+#: public/partials/class-package-pickup-appointment-field.php:216
+#: public/partials/class-package-pickup-appointment-field.php:224
+#: public/partials/class-package-pickup-appointment-field.php:232
+msgctxt "Clear a chosen pickup appointment date"
+msgid "Clear"
+msgstr ""

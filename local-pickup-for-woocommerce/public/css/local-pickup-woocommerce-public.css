@@ -1,0 +1,52 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+ :root {
+    /* Belo variables for plugin CSS use */
+    --dotstore-primary: #27ae60;
+    --dotstore-primary-light: #f7fffa;
+    --dotstore-remove: #EF0000;
+
+    /* Below variables to override WC admin CSS use in our plugin */
+    --wp-admin-theme-color: #27ae60;
+}
+.dslpfw-pickup-location-field .dslpfw-location-wrap{margin-bottom: 10px;}
+.pickup-location-address {margin: 10px 0 10px;line-height: 100%;}
+.form-row .select2-container--default .select2-selection--single .select2-selection__rendered{line-height: 26px;}
+.pickup-location-note {margin-top: 10px;display: block;}
+.dslpfw-item-handling-show, .dslpfw-location-show{ display: block;}
+.dslpfw-item-handling-hide, .dslpfw-location-hide{ display: none;}
+
+/* Elementor Hello Theme Compatibility */
+.theme-hello-elementor.woocommerce-checkout .pickup-location-field .select2-container, .theme-hello-elementor .pickup-location-field .form-row{width: 50% !important;display: block;}
+/* Large devices ( 1050px and down) */
+@media screen and (max-width: 1050px) {
+    .theme-hello-elementor.woocommerce-checkout .pickup-location-field .select2-container, .theme-hello-elementor .pickup-location-field .form-row{width: 100% !important;}
+}
+
+/* Neve Theme Compatibility */
+.theme-neve.woocommerce-checkout .pickup-location-field .select2-container{
+    text-align: left
+}
+.theme-neve.woocommerce-checkout .pickup-location-field p.woocommerce-shipping-contents {
+    margin-top: 10px;
+}
+
+/* Astra Theme Compatibility */
+.theme-astra.woocommerce-js .select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 22px;
+    text-align: left;
+}
+.theme-astra.woocommerce-page.woocommerce-checkout form #order_review td.product-name, .theme-astra.woocommerce.woocommerce-checkout form #order_review td.product-name{
+    flex-wrap:wrap;
+}
+
+/* 2022, 2023 & 2024 Theme Compatibility */
+.wc-block-order-confirmation-totals table tr.ds-local-pickup th {
+    font-weight: 700;
+}
+.wc-block-order-confirmation-totals table tr.ds-local-pickup td {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}

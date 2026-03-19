@@ -1,0 +1,11 @@
+/* Dynamic Promotional Bar CSS */
+.dpb-popup{padding:25px 23px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#FEF7EA;border:2px solid #F0D4A9;-webkit-box-shadow:0 6px 10px 0 rgb(239 229 210 / 88%);box-shadow:0 6px 10px 0 rgb(239 229 210 / 88%);border-radius:10px;margin-bottom:30px;}
+.dpb-popup > img{height:30px;width:30px;}
+.dpb-popup-meta p{margin:0;font-weight:400;font-size:18px;line-height:24px;}
+.dpb-popup img + .dpb-popup-meta{margin-left:20px;}
+.dpbpop-close{width:5%;margin-left:15px;text-align:right;}
+.dpb-popup-meta{margin-right:auto;}
+.dpb-popup-meta p strong{font-weight:500;}
+.dpb-popup-meta p img{margin-right:10px!important;}
+.dpb-popup-meta a{color:var(--dotstore-primary);font-weight:500;margin-left:10px;text-decoration-thickness:1px;text-underline-offset:1px;}
+.dpb-version .pricing-block-button__link{background-color:#4B1BCE;color:#fff;padding:9px 19px!important;border-radius:6px;font-size:18px!important;margin-left:20px;}

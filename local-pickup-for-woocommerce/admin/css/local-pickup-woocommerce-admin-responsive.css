@@ -1,0 +1,54 @@
+/**
+ * All of the CSS for your admin-specific responsive functionality should be
+ * included in this file.
+ */
+
+ /* Extra large devices ( 1200px and down) */
+@media screen and (max-width: 1200px) {
+    .dslpfw-main-table .dslpfw-rule-table tbody tr td input.half-field:not([type=button]):not([type=checkbox]):not([type=radio]):not(.select2-search__field), .dslpfw-main-table table.table-outer tr td textarea.half-field, .dslpfw-main-table .dslpfw-rule-table tbody tr td select.half-field {max-width: 300px;}
+    .dslpfw-main-table .dslpfw-rule-table tbody tr td .dslpfw-fee-adjustment-wrap .dslpfw-input-group{max-width: 500px;margin: 10px 0;}
+    .ui-datepicker {width: 100%;}
+    .dots-settings-inner-main .form-table th {width: 200px;}
+}
+
+@media screen and (max-width:1100px){
+    .dots-getting-started-main > div{width:100%}
+    .dots-getting-started-main .getting-started-video{padding:57% 0 0;}
+}
+
+/* Large devices ( 992px and down) */
+@media screen and (max-width: 1050px) {
+    .dslpfw-main-table .dslpfw-rule-table tbody tr td input.half-field:not([type=button]):not([type=checkbox]):not([type=radio]):not(.select2-search__field), .dslpfw-main-table table.table-outer tr td textarea.half-field, .dslpfw-main-table .dslpfw-rule-table tbody tr td select.half-field {max-width: 100%;min-width: 100%;margin-bottom: 10px;}
+    .dslpfw-main-table .dslpfw-rule-table tbody tr td .dslpfw-fee-adjustment-wrap .dslpfw-input-group input.half-field:not([type=button]):not([type=checkbox]):not([type=radio]):not(.select2-search__field){margin: 0;}
+}
+
+/* Large devices ( 992px and down) */
+@media screen and (max-width: 992px) {
+    .dslpfw-main-table .dslpfw-rule-table tbody tr td input:not([type=button]):not([type=checkbox]):not([type=radio]):not(.select2-search__field), .dslpfw-main-table table.table-outer tr td textarea { max-width: initial;}
+    .dslpfw-main-table .dslpfw-rule-table tbody tr td input.half-field:not([type=button]):not([type=checkbox]):not([type=radio]):not(.select2-search__field), .dslpfw-main-table table.table-outer tr td textarea.half-field, .dslpfw-main-table .dslpfw-rule-table tbody tr td select.half-field {max-width: 100%;min-width: 100%;margin-bottom: 10px;}
+    .dslpfw-import-file{width: inherit;}
+}
+
+@media screen and (max-width:782px){
+    .dslpfw-section-left table.table-outer tr th, .dslpfw-section-left table.table-outer tr td {padding: 10px 20px;}
+    .dslpfw-section-left table.table-outer.dslpfw-table-tooltip tr th label, .dslpfw-section-left table.table-outer.dslpfw-table-tooltip tr td label {display: inline-block;}
+    .ui-datepicker th,.ui-datepicker td{display: table-cell;}
+    .time-range-main{max-width: initial;}
+    .wp-list-table #title{width: 100%;}
+    .dots-settings-inner-main .wp-list-table .row-actions a {padding: 0;}
+    .dots-settings-inner-main .wp-list-table .row-actions {margin: 0;}
+}
+
+/* Devices ( 639px and down) */
+@media screen and (max-width:639px){
+    #fs_account .fs-key-value-table td, #fs_account .fs-key-value-table th{padding:10px 20px;}
+    #fs_account .fs-header-actions{padding:20px 15px;margin:0;border-bottom:1px solid #dadada;}
+    #fs_account .fs-header-actions ul li:nth-child(even)::after{top:-18px;}
+    #fs_account #fs_account_details tr td:nth-child(2){padding:12px 20px;}
+    #fs_account #fs_account_details tr.fs-field-plan td:nth-child(2) .button-group{margin:0}
+
+    .upgrade-to-pro-modal-main .pro-modal-wrapper{padding:25px;}
+    .upgrade-to-pro-modal-main .pro-modal-header img{display:none;}
+    .upgrade-to-pro-modal-main .modal-close-btn{top:-22px;font-size:20px;line-height:13px;padding:7px 0;width:26px;height:26px;color:#000}
+    .upgrade-to-pro-modal-main .modal-close-btn:hover{color:#fff}
+}   

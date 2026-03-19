@@ -1,0 +1,87 @@
+/**
+ * All of the CSS for your admin-specific header functionality should be
+ * included in this file.
+ */
+ :root {
+    --dotstore-primary: #27ae60;
+    --dotstore-secondary: #FFC107;
+    --dotstore-remove: #EF0000;
+}
+
+header.dots-header{width:100%;display:inline-block;background:#fff;vertical-align:top;margin-bottom:20px;border-radius:5px;box-shadow:0 4px 10px rgb(0 0 0 / 8%);margin:10px 0 30px;}
+.dots-plugin-details{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;justify-content:space-between;border-bottom:1px solid rgb(112 112 112 / 20%);padding:10px 20px;}
+.dots-plugin-details .dots-header-left{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;flex-basis:60%;align-items:center;}
+.dots-logo-main{margin:0px;background-color:transparent;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;text-align:center;}
+.dots-logo-main .logo-image{background:#fff;padding:10px;}
+.dots-logo-main .plugin-version{background:#0073aa;color:#fff;padding:8px 8px;font-weight:600;text-align:center;}
+.dots-plugin-details .dots-header-left .plugin-name{color:#000;margin:0 10px;}
+.dots-plugin-details .dots-header-left .plugin-name .title{line-height:24px;font-weight:500;font-size:18px;margin:0px;}
+.dots-plugin-details .dots-header-left .plugin-name .desc{line-height:28px;font-weight:400;font-size:16px;}
+.dots-logo-main img{width:38px;padding:0;border-radius: 50%;}
+.dots-header-right{flex-basis:40%;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;align-items:center;justify-content:flex-end;width:90%;}
+.dots-header-right .logo-detail{display:inline-block;padding-left:20px;box-sizing:border-box;vertical-align:middle;margin:0;}
+#dotsstoremain .button-dots{display:inline-flex;vertical-align:middle;margin-left:0px;margin-right:0px;float:right;}
+.dots-header-right .logo-detail strong{display:block;font-size:23px;margin-bottom:10px;color:#000;line-height:32px;}
+.button-dots span.support_dotstore_image,.button-dots-left span.support_dotstore_image{display:block;text-align:center;}
+.button-dots span.support_dotstore_image a,.button-dots-left span.support_dotstore_image a{text-decoration:none;}
+.button-dots span.support_dotstore_image a span,.button-dots-left span.support_dotstore_image a span{font-size:50px;display:block;width:50px;height:50px;margin:0 auto;margin-bottom:5px;}
+.button-dots span.support_dotstore_image a strong,.button-dots-left span.support_dotstore_image a strong{font-size:15px;}
+.dots-menu-main{background-color:transparent;width:calc(100% - 48px);}
+.dots-menu-main ul li{display:inline-block;position:relative;float:left;margin:0;}
+.dots-menu-main ul li a{text-decoration:none;-webkit-transition:all 200ms ease-in;transition:all 200ms ease-in;font-size:14px;padding:12px 20px;display:block;line-height:20px;color:#000;font-weight:400;padding:11px 0;border-bottom:2px solid transparent;margin:0 14px;}
+.dots-menu-main ul li:hover > a,.dots-menu-main ul li a.active{color:#000;background:transparent;border-bottom-color:var(--dotstore-primary);}
+.dots-menu-main ul{display:inline-block;float:left;margin:0;width:100%;}
+.dots-menu-main ul li ul.sub-menu{display:none;position:absolute;top:100%;left:0;width:207px;z-index:999;box-shadow:0 4px 10px 4px rgb(0 0 0 / 8%);}
+.dots-menu-main ul li ul.sub-menu li{display:block;vertical-align:middle;text-align:left;background-color:#fff;width:100%;}
+.dots-menu-main ul li:hover ul.sub-menu{display:block;}
+.dots-plugin-details .version-label{font-size:18px;line-height:24px;font-weight:500;color:#939393;border:1px solid #E2E4E7;border-radius:4px;position:relative;padding:8px 10px 8px 30px;text-transform:uppercase;margin-right:9px;}
+.dots-plugin-details .version-label::before{content:"";position:absolute;top:13px;left:10px;display:inline-block;width:16px;height:14px;background-image:url('../images/pro-plugin-icon.svg');background-repeat: no-repeat;}
+.dots-plugin-details .version-label.pro_local_pickup::before{background-image:url('../images/premium-upgrade-img/pro-feature-icon.svg');}
+.dots-plugin-details .version-number{font-size:13px;line-height:18px;font-weight:400;color:#BABDC3;}
+.dots-bottom-menu-main{padding:0 10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-wrap:wrap;flex-wrap:wrap;}
+.dots-getting-started{width:48px}
+.dots-getting-started a{display:inline-block;padding:8.5px 12px;font-size:14px;line-height:10px;border-bottom:2px solid transparent;-webkit-transition: all .2s ease-in;-o-transition: all .2s ease-in;transition: all .2s ease-in;}
+.dots-getting-started a:hover,.dots-getting-started a.active{border-bottom-color:var(--dotstore-primary);}
+.dots-header .button-dots a{font-size:16px;line-height:21px;font-weight:400;color:#000;text-decoration:none;position:relative;margin-right:12px;padding-right:14px;}
+.dots-header .button-dots a::after{content:"|";position:absolute;display:inline-block;font-size:16px;line-height:20px;font-weight:400;color:#000;top:0;right:0;}
+.dots-header .button-dots a:not(.dots-upgrade-btn)::before{content:"";position:absolute;bottom:-4px;left:0;width:calc(100% - 13px);display:inline-block;height:2px;background-color:var(--dotstore-primary);visibility:hidden;opacity:0}
+.dots-header .button-dots:last-child a:not(.dots-upgrade-btn)::before{width:100%;}
+.dots-header .button-dots.last-link-button a::before{width:100%;}
+.dots-header .button-dots a:hover::before{visibility:visible;opacity:1}
+.dots-header .button-dots:last-child a, .dots-header .button-dots.last-link-button a {padding-right:0;margin-right:0;}
+.dots-header .button-dots:last-child a::after, .dots-header .button-dots.last-link-button a::after{display:none;}
+.dots-header .button-dots a.dots-upgrade-btn{background-color:var(--dotstore-secondary);border-radius:5px;padding:8px 20px;color:#000;margin-left:16px;text-align:center;}
+#adminmenu .wp-has-current-submenu .wp-not-current-submenu + .wp-submenu{border-left:none;}
+
+/* Plugin submenu items design */
+.dotstore-submenu-items{display:inline-block;width:100%;margin:0 0 18px;}
+.dotstore-submenu-items ul{display:flex;flex-wrap:wrap;align-items:center;padding:0;margin:0;}
+.dotstore-submenu-items ul li{position:relative;display:inline-block;padding-right:10px;margin-right:8px;}
+.dotstore-submenu-items ul li::before{content:"|";position:absolute;display:inline-block;font-size:16px;line-height:16px;font-weight:400;color:#8C8F94;top:0;right:0;}
+.dotstore-submenu-items ul li:last-child::before{display:none;}
+.dotstore-submenu-items ul li a{font-size:14px;line-height:19px;font-weight:400;color:#000;text-decoration:none;}
+.dotstore-submenu-items ul li a.active{color:var(--dotstore-primary);font-weight:600;}
+
+/* Responsive CSS Start */
+@media screen and (max-width: 1200px) {
+    .dots-header .button-dots a {font-size: 14px;}
+}
+@media only screen and (max-width:991px){
+    .dots-plugin-details{padding:8px 12px;}
+    .dots-header .button-dots a {font-size: 14px;line-height: 19px;margin-right: 8px;padding-right: 11px;}
+    .dots-plugin-details .dots-header-left .plugin-name .title {font-size: 16px;line-height: 22px;}
+    .dots-plugin-details .version-label {padding: 8px 8px 8px 30px;font-size: 15px;line-height: 22px;}
+    .dots-menu-main ul li a {font-size: 13px;line-height: 18px;padding: 10px 0;margin: 0 10px;}
+}
+
+@media screen and (max-width: 767px) {
+    .dots-plugin-details {-ms-flex-wrap: wrap;flex-wrap: wrap;padding: 0;}
+    .dots-plugin-details .dots-header-left {padding: 8px 12px;width: 100%;-ms-flex-preferred-size: 100%;flex-basis: 100%;border-bottom: 1px solid #E2E4E7;}
+    .dots-plugin-details .dots-header-right {float: none;padding: 10px 12px;width: 100%;-ms-flex-preferred-size: 100%;flex-basis: 100%;-webkit-box-pack: start;-ms-flex-pack: start;justify-content: flex-start;}
+    .dots-menu-main {padding: 0 2px;}
+}
+
+@media screen and (max-width: 559px) {
+    .dots-plugin-details .dots-header-left,.dots-plugin-details .dots-header-right{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-wrap:wrap;flex-wrap:wrap;}
+}
+/* Responsive CSS End */

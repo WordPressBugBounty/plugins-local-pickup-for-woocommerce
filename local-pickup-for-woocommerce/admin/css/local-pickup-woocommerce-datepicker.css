@@ -1,0 +1,17 @@
+.ui-datepicker {font-family: inherit;width: 620px;}
+.ui-datepicker select:hover {color: var(--dotstore-primary);}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{width: 30px;height: 30px;top: 0;cursor: pointer;}
+.ui-datepicker .ui-datepicker-next{right: 10px;}
+.ui-datepicker .ui-datepicker-prev {left: 10px;transform: rotate(180deg);top: 13px;}
+.ui-datepicker .ui-datepicker-prev:hover, .ui-datepicker .ui-datepicker-next:hover {background: none;box-shadow: none;outline: 0;border: none;font-weight: inherit;}
+.ui-datepicker .ui-datepicker-title {display: flex;flex-wrap: nowrap;width: 100%;margin: 0 !important;padding: 0px 40px;justify-content: space-between;}
+.ui-datepicker .ui-datepicker-header select.ui-datepicker-month, .ui-datepicker .ui-datepicker-header select.ui-datepicker-year {max-width: 49%;min-width: 49%;width: 100%;}
+.datepicker .ui-datepicker .ui-datepicker-calendar {border-collapse: collapse;}
+.datepicker .ui-datepicker .ui-datepicker-calendar thead tr, .ui-datepicker-header.ui-widget-header {background: #DEDEDE;border: none;border-radius: 0;}
+.datepicker .ui-datepicker .ui-datepicker-calendar tr th {font-weight: 700;background-color: #e0e0e0;font-size: 18px;}
+.datepicker .ui-datepicker .ui-datepicker-calendar tr td {font-size: 16px;padding: 10px;text-align: center;}
+.datepicker .ui-datepicker .ui-datepicker-calendar tr td .ui-state-default:not(.ui-state-disabled):hover {background-color: var(--dotstore-primary);opacity: 0.6;color: #fff;}
+.ui-state-default.ui-state-highlight {color: var(--dotstore-primary);font-weight: 700;}
+.ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{border: none;background: transparent;text-align: center;height: 40px;width: 40px;border-radius: 50%;padding: 10px;display: inline-block;}
+.dslpfw-selected a.ui-state-default, .dslpfw-selected .ui-state-default.ui-state-highlight{color: #fff;background: var(--dotstore-primary);}
+.ui-widget-header .ui-icon {background-image: url(../images/icons/datepicker-next.svg);background-position: 0;background-size: 30px;width: 30px;height: 30px;}
