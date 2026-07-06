@@ -30,22 +30,59 @@
 	 */
     $(function() {
         //pickup location dropdown init & change event ( "o" function in reference plugin )
+        function dslpfw_get_pickup_location_option_attr( data, attr ) {
+            if ( data.element ) {
+                return $( data.element ).attr( attr ) || '';
+            }
+
+            return '';
+        }
+
+        function dslpfw_pickup_location_option_matches_search( data, term ) {
+            var name = ( data.name || dslpfw_get_pickup_location_option_attr( data, 'data-name' ) ).toLowerCase();
+            var address = ( data.address || dslpfw_get_pickup_location_option_attr( data, 'data-address' ) ).toLowerCase();
+            var postcode = ( data.postcode || dslpfw_get_pickup_location_option_attr( data, 'data-postcode' ) ).toLowerCase();
+            var city = dslpfw_get_pickup_location_option_attr( data, 'data-city' ).toLowerCase();
+            var text = ( data.text || '' ).toLowerCase();
+
+            if ( data.element && ! text ) {
+                text = $( data.element ).text().toLowerCase();
+            }
+
+            return (
+                name.indexOf( term ) > -1 ||
+                address.indexOf( term ) > -1 ||
+                postcode.indexOf( term ) > -1 ||
+                city.indexOf( term ) > -1 ||
+                text.indexOf( term ) > -1
+            );
+        }
+
         function dslpfw_initiate_select2() {
             var selct2_obj = $('.pickup-location-list');
-            // var width = selct2_obj.closest('td').css('width');
-            
-            // Fixes for #105002 ticket issue
-            if (selct2_obj.length === 0) { return; }
+            var selectFn = $.fn.selectWoo || $.fn.select2;
 
-            selct2_obj.select2({ 
+            // Fixes for #105002 ticket issue
+            if ( selct2_obj.length === 0 || ! selectFn ) { return; }
+
+            selct2_obj.each(function() {
+                var $select = $(this);
+
+                if ( $select.hasClass( 'select2-hidden-accessible' ) ) {
+                    selectFn.call( $select, 'destroy' );
+                }
+            });
+
+            var nearbyEnabled = !! dslpfw_front_vars.nearby_pickup_locations_enabled;
+            var select2Options = {
                 width: 'resolve',
                 templateResult: function (state) {
                     if (!state.id) {
                         return state.text;
                     }
-                    var location_name = state.name ? state.name : $(state.element).data('name'),
-                        location_address = state.address ? state.address : $(state.element).data('address'),
-                        location_postcode = state.postcode ? state.postcode : $(state.element).data('postcode');
+                    var location_name = state.name ? state.name : dslpfw_get_pickup_location_option_attr( state, 'data-name' ),
+                        location_address = state.address ? state.address : dslpfw_get_pickup_location_option_attr( state, 'data-address' ),
+                        location_postcode = state.postcode ? state.postcode : dslpfw_get_pickup_location_option_attr( state, 'data-postcode' );
                     var $state = $(
                         '<span>' + location_name + '</span><br>' + 
                         '<small>' + location_address + ' - <em>' + location_postcode + '</em></small>'
@@ -53,54 +90,44 @@
                     return $state ? $state : state.text;
                 },
                 matcher: function(params, data) {
-                    // If there are no search terms, return all of the data
-                    if ($.trim(params.term) === '') {
+                    // Placeholder option should always be available to Select2 internals.
+                    if ( ! data.id ) {
                         return data;
                     }
 
-                    // Prepare variables for matching
-                    var term = params.term.toLowerCase();
+                    var term = $.trim( params.term || params.query || '' ).toLowerCase();
+                    var isSearching = term.length > 0;
 
-                    // Search name, address, postcode fields
-                    var name = '';
-                    var address = '';
-                    var postcode = '';
-                    
-                    // state.option for legacy, state.element for select2 4+
-                    if (data.name) {
-                        name = data.name.toLowerCase();
-                    } else if (data.element) {
-                        name = ($(data.element).data('name') || '').toLowerCase();
+                    // When searching, include all eligible locations regardless of nearby flag.
+                    if ( isSearching ) {
+                        return dslpfw_pickup_location_option_matches_search( data, term ) ? data : null;
                     }
 
-                    if (data.address) {
-                        address = data.address.toLowerCase();
-                    } else if (data.element) {
-                        address = ($(data.element).data('address') || '').toLowerCase();
-                    }
-                    
-                    if (data.postcode) {
-                        postcode = data.postcode.toLowerCase();
-                    } else if (data.element) {
-                        var postcodeData = $(data.element).data('postcode');
-                        postcode = (typeof postcodeData === 'string' ? postcodeData : (postcodeData !== undefined && postcodeData !== null ? String(postcodeData) : '')).toLowerCase();
+                    // When not searching, only show nearby locations by default.
+                    if ( nearbyEnabled ) {
+                        var isNearby = dslpfw_get_pickup_location_option_attr( data, 'data-nearby' );
+
+                        if ( '1' !== isNearby ) {
+                            return null;
+                        }
                     }
 
-                    // If search term matches name, address, or postcode
-                    if (
-                        name.indexOf(term) > -1 ||
-                        address.indexOf(term) > -1 ||
-                        postcode.indexOf(term) > -1
-                    ) {
-                        return data;
-                    }
-
-                    // Return null if not matched
-                    return null;
+                    return data;
                 }
-            });
+            };
+
+            if ( nearbyEnabled ) {
+                select2Options.minimumResultsForSearch = 0;
+            }
+
+            selectFn.call( selct2_obj, select2Options );
 
             selct2_obj.off('change.ds-local-pickup').on( 'change.ds-local-pickup', function () {
+                var $selectedOption = $(this).find('option:selected');
+
+                if ( $selectedOption.length && $selectedOption.val() && '1' !== $selectedOption.attr( 'data-nearby' ) ) {
+                    $selectedOption.attr( 'data-nearby', '1' );
+                }
                 var object_type = $(this).data('pickup-object-type');
                 var object_id = $(this).data('pickup-object-id');
                 var current_val = $(this).val();
@@ -255,6 +282,9 @@
 
         $(document.body).on('updated_checkout', function () {
             dslpfw_show_hide_shipping_fields_checkout();
+            dslpfw_toggle_pickup_shipping_handling();
+            dslpfw_initiate_select2();
+
             if( $('.dslpfw-pickup-location-appointment') ) {
                 $('.dslpfw-pickup-location-appointment').each(function(){
                     var $this = $(this);
@@ -274,8 +304,6 @@
                         }
                     });
                 });
-                dslpfw_toggle_pickup_shipping_handling();
-                dslpfw_initiate_select2();
             }
         });
     });

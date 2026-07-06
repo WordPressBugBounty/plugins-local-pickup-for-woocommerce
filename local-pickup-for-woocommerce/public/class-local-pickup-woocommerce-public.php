@@ -141,13 +141,18 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
          * between the defined hooks and the functions defined in this
          * class.
          */
+        $script_deps = array('jquery', 'jquery-ui-datepicker');
+        if ( wp_script_is( 'selectWoo', 'registered' ) ) {
+            $script_deps[] = 'selectWoo';
+        }
         wp_enqueue_script(
             $this->plugin_name,
             plugin_dir_url( __FILE__ ) . 'js/local-pickup-woocommerce-public.js',
-            array('jquery', 'jquery-ui-datepicker'),
+            $script_deps,
             $this->version,
-            false
+            true
         );
+        $nearby_pickup_locations_enabled = false;
         $shipping_method = dslpfw_shipping_method();
         wp_localize_script( $this->plugin_name, 'dslpfw_front_vars', array(
             'ajaxurl'                                             => admin_url( 'admin-ajax.php' ),
@@ -164,6 +169,7 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
             'date_format'                                         => wc_date_format(),
             'start_of_week'                                       => get_option( 'start_of_week', 1 ),
             'datepicker_title'                                    => esc_html__( 'Choose a pickup date', 'local-pickup-for-woocommerce' ),
+            'nearby_pickup_locations_enabled'                     => $nearby_pickup_locations_enabled,
         ) );
     }
 
@@ -984,12 +990,59 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
             $pickup_location_ids = ( isset( $dslpfw_pickup_data['_shipping_method_pickup_location_id'] ) ? $dslpfw_pickup_data['_shipping_method_pickup_location_id'] : [] );
             $pickup_dates = ( isset( $dslpfw_pickup_data['_shipping_method_pickup_date'] ) ? $dslpfw_pickup_data['_shipping_method_pickup_date'] : [] );
             $appointment_offsets = ( isset( $dslpfw_pickup_data['_shipping_method_pickup_appointment_offset'] ) ? $dslpfw_pickup_data['_shipping_method_pickup_appointment_offset'] : [] );
+            $cart_item_pickup_location_ids = array();
+            if ( $local_pickup_method->dslpfw_is_per_item_selection_enabled() ) {
+                $cart_location_filter = array(
+                    '_pickup_location_id' => array(
+                        'filter' => FILTER_SANITIZE_NUMBER_INT,
+                        'flags'  => FILTER_REQUIRE_ARRAY,
+                    ),
+                );
+                $posted_cart_locations = filter_input_array( INPUT_POST, $cart_location_filter );
+                if ( !empty( $posted_cart_locations['_pickup_location_id'] ) && is_array( $posted_cart_locations['_pickup_location_id'] ) ) {
+                    $cart_item_pickup_location_ids = $posted_cart_locations['_pickup_location_id'];
+                }
+            }
             foreach ( $local_pickup_packages as $package_id ) {
                 $error_messages = [];
-                // a pickup location has not been chosen:
-                if ( empty( $pickup_location_ids[$package_id] ) ) {
+                // a pickup location has not been chosen (per-order selection mode):
+                if ( !$local_pickup_method->dslpfw_is_per_item_selection_enabled() && empty( $pickup_location_ids[$package_id] ) ) {
                     /* translators: Placeholder: %s - user assigned name for Local Pickup WooCommerce shipping method */
                     $error_messages['pickup_location_id'] = sprintf( esc_html__( 'Please select a pickup location if you intend to use %s as shipping method.', 'local-pickup-for-woocommerce' ), $local_pickup_method->get_method_title() );
+                }
+                // per-item selection: each pickup item must have a location chosen
+                if ( $local_pickup_method->dslpfw_is_per_item_selection_enabled() ) {
+                    $session_pickup_data = dslpfw()->get_dslpfw_session_object()->get_cart_item_pickup_data( null );
+                    $packages = WC()->shipping()->get_packages();
+                    if ( !empty( $packages[$package_id]['contents'] ) ) {
+                        foreach ( $packages[$package_id]['contents'] as $cart_item_key => $cart_item ) {
+                            $product = ( isset( $cart_item['data'] ) ? $cart_item['data'] : null );
+                            if ( !$product instanceof \WC_Product || !dslpfw_product_can_be_picked_up( $product ) ) {
+                                continue;
+                            }
+                            $handling = ( isset( $session_pickup_data[$cart_item_key]['handling'] ) ? $session_pickup_data[$cart_item_key]['handling'] : 'pickup' );
+                            if ( 'pickup' !== $handling ) {
+                                continue;
+                            }
+                            $location_id = 0;
+                            if ( !empty( $cart_item_pickup_location_ids[$cart_item_key] ) ) {
+                                $location_id = (int) $cart_item_pickup_location_ids[$cart_item_key];
+                            } elseif ( !empty( $session_pickup_data[$cart_item_key]['pickup_location_id'] ) ) {
+                                $location_id = (int) $session_pickup_data[$cart_item_key]['pickup_location_id'];
+                            } elseif ( !empty( $cart_item['pickup_location_id'] ) ) {
+                                $location_id = (int) $cart_item['pickup_location_id'];
+                            } else {
+                                $single_location = dslpfw()->get_dslpfw_products_object()->get_product_pickup_location( $product );
+                                if ( $single_location ) {
+                                    $location_id = (int) $single_location->get_id();
+                                }
+                            }
+                            if ( $location_id <= 0 ) {
+                                $error_messages['pickup_location_id'] = esc_html__( 'Please select a pickup location for each item set for local pickup.', 'local-pickup-for-woocommerce' );
+                                break;
+                            }
+                        }
+                    }
                 }
                 // the selected appointment time is no longer available:
                 if ( !empty( $pickup_location_ids[$package_id] ) && !empty( $pickup_dates[$package_id] ) ) {

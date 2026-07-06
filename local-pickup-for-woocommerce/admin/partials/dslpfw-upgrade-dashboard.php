@@ -136,13 +136,13 @@ $plugin_key_features = array(
     ),
     array(
         'title' => esc_html__( 'Set Pickup Locations Ordering', 'local-pickup-for-woocommerce' ),
-        'description' => esc_html__( 'Arrange pickup locations alphabetically in the dropdown menu for easy and quick selection.', 'local-pickup-for-woocommerce' ),
+        'description' => esc_html__( 'Arrange pickup locations alphabetically, by date added, or nearest to the customer address in the dropdown menu.', 'local-pickup-for-woocommerce' ),
         'popup_image' => esc_url( DSLPFW_PLUGIN_URL . 'admin/images/pro-features-img/feature-screenshot-8.png' ),
         'popup_content' => array(
-        	esc_html__( 'Customers can select a pickup location from an alphabetically ordered dropdown list during checkout.', 'local-pickup-for-woocommerce' ),
+        	esc_html__( 'Customers can select a pickup location from a sorted dropdown list during checkout.', 'local-pickup-for-woocommerce' ),
         ),
         'popup_examples' => array(
-            esc_html__( 'This arrangement makes it easy for them to find and choose their preferred location, streamlining the checkout process and enhancing the user experience.', 'local-pickup-for-woocommerce' ),
+            esc_html__( 'Sort locations alphabetically, by most recently added, or show the nearest locations based on the customer billing address.', 'local-pickup-for-woocommerce' ),
             esc_html__( 'Displaying pickup locations in a logical order ensures customers can quickly locate the most convenient option.', 'local-pickup-for-woocommerce' ),
         )
     )

@@ -551,6 +551,8 @@
             let couponCode = $('.upgrade-to-pro-discount-code').val();
             upgradeToProFreemius( couponCode );
         });
+
+        dslpfwInitPickupLocationSortable();
     });
 
     // Set cookies
@@ -654,6 +656,99 @@
                 parent_node.parent().find('.dslpfw-input-group').find('span').remove();
             }
         });
+    }
+
+    function dslpfwInitPickupLocationSortable() {
+        var $sortableWrap = $('.dslpfw-pickup-location-sortable');
+        var $sortableRows = $sortableWrap.find('#the-list tr');
+
+        if ( ! $sortableWrap.length || $sortableRows.length < 2 || typeof $.fn.sortable !== 'function' ) {
+            return;
+        }
+
+        var fixPickupLocationSortHelper = function( e, tr ) {
+            var $originals = tr.children();
+            var $helper    = tr.clone();
+
+            $helper.children().each( function( index ) {
+                $( this ).width( $originals.eq( index ).width() );
+            } );
+
+            return $helper;
+        };
+
+        var savePickupLocationOrder = function() {
+            var locationOrderArray = [];
+
+            $sortableWrap.find('#the-list tr').each( function() {
+                var locationId = $( this ).find( 'input[name="method_id_cb[]"]' ).val();
+
+                if ( locationId ) {
+                    locationOrderArray.push( locationId );
+                }
+            } );
+
+            if ( ! locationOrderArray.length ) {
+                return;
+            }
+
+            $sortableWrap.block( {
+                message: null,
+                overlayCSS: {
+                    background: 'rgb(255, 255, 255)',
+                    opacity: 0.6,
+                },
+            } );
+
+            $.ajax( {
+                type: 'GET',
+                url: dslpfw_vars.ajaxurl,
+                data: {
+                    action: 'dslpfw_pickup_location_sort_order',
+                    nonce: dslpfw_vars.dslpfw_ajax_nonce,
+                    locationOrderArray: locationOrderArray,
+                    paged: $( '.current-page' ).val() || 1
+                },
+                success: function( response ) {
+                    var $notice;
+
+                    if ( response.success ) {
+                        $notice = $( '<div></div>' ).addClass( 'notice notice-success' );
+                        $notice.append( $( '<p></p>' ).text( response.data || dslpfw_vars.pickup_location_sort_success ) );
+                    } else {
+                        $notice = $( '<div></div>' ).addClass( 'notice notice-error' );
+                        $notice.append( $( '<p></p>' ).text( response.data ) );
+                    }
+
+                    $( $notice ).insertAfter( $( '.wp-header-end' ) );
+                    setTimeout( function() {
+                        $notice.remove();
+                    }, 5000 );
+                },
+                complete: function() {
+                    $sortableWrap.unblock();
+                }
+            } );
+        };
+
+        $sortableWrap.find('#the-list').sortable( {
+            axis: 'y',
+            handle: '.column-drag',
+            helper: fixPickupLocationSortHelper,
+            placeholder: {
+                element: function( currentItem ) {
+                    var cols = $( currentItem ).children( 'td' ).length;
+
+                    return $( '<tr class="ui-sortable-placeholder"><td colspan="' + cols + '">&nbsp;</td></tr>' )[0];
+                },
+                update: function() {
+                    return;
+                }
+            },
+            stop: function() {
+                savePickupLocationOrder();
+            }
+        } );
     }
     
 })( jQuery );

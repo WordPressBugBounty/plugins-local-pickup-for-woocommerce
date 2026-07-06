@@ -41,6 +41,7 @@
 .theme-astra.woocommerce-page.woocommerce-checkout form #order_review td.product-name, .theme-astra.woocommerce.woocommerce-checkout form #order_review td.product-name{
     flex-wrap:wrap;
 }
+.woocommerce form .pickup-location-field .select2-container{width: 100%!important;}
 
 /* 2022, 2023 & 2024 Theme Compatibility */
 .wc-block-order-confirmation-totals table tr.ds-local-pickup th {
@@ -49,4 +50,24 @@
 .wc-block-order-confirmation-totals table tr.ds-local-pickup td {
     font-variant-numeric: tabular-nums;
     text-align: right;
+}
+
+/* Media CSS */
+@media screen and (max-width: 767px) {
+    .woocommerce form .pickup-location-field .select2-container .select2-selection__rendered {
+        max-width: 250px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .woocommerce form .pickup-location-field .select2-container .select2-selection__rendered {
+        max-width: 140px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .woocommerce form .pickup-location-field .select2-container .select2-selection__rendered {
+        max-width: 100px;
+    }
+    .theme-astra .woocommerce form .pickup-location-field .select2-container .select2-selection__rendered {
+        max-width: 60px;
+    }
 }

@@ -266,6 +266,8 @@ if ( !class_exists( 'DSLPFW_Local_Pickup_Woocommerce' ) ) {
             $this->loader->add_action( 'admin_notices', $plugin_admin, 'dslpfw_display_action_message' );
             // Change status on listing of pickup location
             $this->loader->add_action( 'wp_ajax_dslpfw_change_status_from_list', $plugin_admin, 'dslpfw_change_status_from_list_callback' );
+            // Save pickup location sort order from listing page
+            $this->loader->add_action( 'wp_ajax_dslpfw_pickup_location_sort_order', $plugin_admin, 'dslpfw_pickup_location_sort_order_callback' );
             // Get product data for pickup location
             $this->loader->add_action( 'wp_ajax_dslpfw_json_search_products', $plugin_admin, 'dslpfw_json_search_products_callback' );
             // Import/Export Pickup Locations AJAX
@@ -592,6 +594,7 @@ if ( !class_exists( 'DSLPFW_Local_Pickup_Woocommerce' ) ) {
                     'value'                  => array(),
                     'data-name'              => array(),
                     'data-postcode'          => array(),
+                    'data-nearby'            => array(),
                     'data-city'              => array(),
                     'data-address'           => array(),
                     'data-address-formatted' => array(),
@@ -950,7 +953,7 @@ if ( !class_exists( 'DSLPFW_Local_Pickup_Woocommerce' ) ) {
                 return false;
             }
             $query_args = array(
-                'message' => $message,
+                'dslpfw_message' => $message,
             );
             $current_url = '';
             if ( isset( $_SERVER['REQUEST_URI'] ) ) {

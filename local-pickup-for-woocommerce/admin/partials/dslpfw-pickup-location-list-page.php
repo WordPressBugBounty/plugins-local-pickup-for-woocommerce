@@ -138,10 +138,10 @@ if ( !class_exists( 'DSLPFW_Pickup_Location_Listing' ) ) {
                     $pickup_location->set_phone( $dslpfw_pickup_location_phone );
                 }
                 wp_safe_redirect( add_query_arg( array(
-                    'page'    => 'dslpfw-pickup-location-list',
-                    'action'  => 'edit',
-                    'id'      => $post_id,
-                    'message' => $message_type,
+                    'page'           => 'dslpfw-pickup-location-list',
+                    'action'         => 'edit',
+                    'id'             => $post_id,
+                    'dslpfw_message' => $message_type,
                 ), admin_url( 'admin.php' ) ) );
                 exit;
             }
@@ -197,10 +197,13 @@ if ( !class_exists( 'DSLPFW_Pickup_Location_Listing' ) ) {
                 'action' => 'add',
             ), admin_url( 'admin.php' ) );
             require_once plugin_dir_path( __FILE__ ) . 'header/plugin-header.php';
+            $enable_pickup_location_sort = DSLPFW_Local_Pickup_Woocommerce_Admin::dslpfw_is_pickup_location_sortable_list();
             ?>
                 <form method="post" enctype="multipart/form-data">
                     <div class="dslpfw-section-left">
-                        <div class="dslpfw-main-table res-cl dslpfw-add-rule-page">
+                        <div class="dslpfw-main-table res-cl dslpfw-add-rule-page<?php 
+            echo ( $enable_pickup_location_sort ? ' dslpfw-pickup-location-sortable' : '' );
+            ?>">
                             <h1 class="wp-heading-inline"><?php 
             esc_html_e( 'Pickup Locations', 'local-pickup-for-woocommerce' );
             ?></h1>
@@ -246,8 +249,8 @@ if ( !class_exists( 'DSLPFW_Pickup_Location_Listing' ) ) {
             if ( isset( $getnonce ) && 1 === $getnonce ) {
                 wp_delete_post( $id );
                 wp_safe_redirect( add_query_arg( array(
-                    'page'    => 'dslpfw-pickup-location-list',
-                    'message' => 'deleted',
+                    'page'           => 'dslpfw-pickup-location-list',
+                    'dslpfw_message' => 'deleted',
                 ), admin_url( 'admin.php' ) ) );
                 exit;
             }
@@ -303,10 +306,10 @@ if ( !class_exists( 'DSLPFW_Pickup_Location_Listing' ) ) {
                     $admin_url = admin_url( 'admin.php' );
                     //Redirect after duplicate rule
                     wp_safe_redirect( add_query_arg( array(
-                        'page'    => 'dslpfw-pickup-location-list',
-                        'action'  => 'edit',
-                        'id'      => $duplicate_post_id,
-                        'message' => 'duplicated',
+                        'page'           => 'dslpfw-pickup-location-list',
+                        'action'         => 'edit',
+                        'id'             => $duplicate_post_id,
+                        'dslpfw_message' => 'duplicated',
                     ), $admin_url ) );
                     exit;
                 }

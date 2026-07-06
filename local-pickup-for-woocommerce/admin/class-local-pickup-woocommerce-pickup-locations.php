@@ -221,9 +221,26 @@ class DSLPFW_Local_Pickup_WooCommerce_Pickup_Locations {
      * @return \DSLPFW_Local_Pickup_WooCommerce_Pickup_Location[]
      */
     public function get_sorted_pickup_locations( $query_args = array() ) {
-        $query_args['order'] = 'DESC';
-        $pickup_locations = $this->get_pickup_locations( $query_args );
-        return $pickup_locations;
+        $sort_order = 'default';
+        switch ( $sort_order ) {
+            case 'alphabetical':
+                $query_args['orderby'] = 'title';
+                $query_args['order'] = 'ASC';
+                break;
+            case 'date_added':
+                $query_args['orderby'] = 'date';
+                $query_args['order'] = 'DESC';
+                break;
+            case 'nearby_address':
+                $query_args['orderby'] = 'menu_order';
+                $query_args['order'] = 'ASC';
+                break;
+            default:
+                $query_args['orderby'] = 'menu_order';
+                $query_args['order'] = 'ASC';
+                break;
+        }
+        return $this->get_pickup_locations( $query_args );
     }
 
 }

@@ -185,6 +185,117 @@ function dslpfw_get_pickup_locations( $args = array() ) {
 	return dslpfw()->get_dslpfw_pickup_locations_object()->get_pickup_locations( $args );
 }
 
+/**
+ * Whether a default pickup location should be auto-selected when multiple locations are available.
+ *
+ * A single available location is always auto-selected. When multiple locations exist, customers
+ * must choose unless they have a saved preference (see cart/checkout field logic).
+ *
+ * @since 1.1.3
+ *
+ * @param int   $available_locations_count number of eligible pickup locations.
+ * @param array $context                   additional context (e.g. product, package, object_type).
+ * @return bool
+ */
+function dslpfw_should_auto_select_pickup_location( $available_locations_count, $context = array() ) {
+
+	if ( 1 === (int) $available_locations_count ) {
+		return true;
+	}
+
+	$context['available_locations_count'] = (int) $available_locations_count;
+
+	/**
+	 * Filters whether a default pickup location should be auto-selected when multiple locations are available.
+	 *
+	 * Return `true` to restore the legacy behavior of auto-selecting the first available location.
+	 * When `false` (default), customers must choose a location unless they have a saved preference
+	 * or only one location applies.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @param bool  $auto_select whether to auto-select.
+	 * @param array $context     additional context (includes `available_locations_count`).
+	 */
+	return (bool) apply_filters( 'dslpfw_auto_select_default_pickup_location', false, $context );
+}
+
+/**
+ * Checks whether every shippable item in a package can be picked up at a location.
+ *
+ * @since 1.1.3
+ *
+ * @param array                                                  $package         WooCommerce shipping package.
+ * @param \DSLPFW_Local_Pickup_WooCommerce_Pickup_Location|null $pickup_location pickup location object.
+ * @return bool
+ */
+function dslpfw_package_can_use_pickup_location( $package, $pickup_location ) {
+
+	if ( empty( $package['contents'] ) || ! $pickup_location instanceof \DSLPFW_Local_Pickup_WooCommerce_Pickup_Location ) {
+		return false;
+	}
+
+	foreach ( $package['contents'] as $item ) {
+
+		$product = isset( $item['data'] ) ? $item['data'] : null;
+
+		if ( $product instanceof \WC_Product && ! dslpfw_product_can_be_picked_up( $product, $pickup_location ) ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Counts pickup locations available for all items in a package.
+ *
+ * @since 1.1.3
+ *
+ * @param array $package WooCommerce shipping package.
+ * @return int
+ */
+function dslpfw_count_package_available_pickup_locations( $package ) {
+
+	$count = 0;
+
+	foreach ( dslpfw_get_pickup_locations() as $pickup_location ) {
+
+		if ( dslpfw_package_can_use_pickup_location( $package, $pickup_location ) ) {
+			$count++;
+		}
+	}
+
+	return $count;
+}
+
+/**
+ * Returns the first sorted pickup location ID that is valid for a product or package.
+ *
+ * @since 1.1.3
+ *
+ * @param \WC_Product|null $product optional product to filter locations.
+ * @param array            $package optional package to filter locations.
+ * @return int pickup location ID or 0.
+ */
+function dslpfw_get_first_available_pickup_location_id( $product = null, $package = array() ) {
+
+	foreach ( dslpfw()->get_dslpfw_pickup_locations_object()->get_sorted_pickup_locations() as $pickup_location ) {
+
+		if ( $product instanceof \WC_Product && ! dslpfw_product_can_be_picked_up( $product, $pickup_location ) ) {
+			continue;
+		}
+
+		if ( ! empty( $package ) && ! dslpfw_package_can_use_pickup_location( $package, $pickup_location ) ) {
+			continue;
+		}
+
+		return (int) $pickup_location->get_id();
+	}
+
+	return 0;
+}
+
 // Pickup Locations Functions End
 
 

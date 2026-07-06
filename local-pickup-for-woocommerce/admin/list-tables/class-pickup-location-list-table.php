@@ -45,6 +45,7 @@ if ( ! class_exists( 'DSLPFW_Pickup_Location_List_Table' ) ) {
 		 */
 		public function get_columns() {
 			$column_array = array(
+				'drag'              => '',
 				'cb'                => '<input type="checkbox" />',
 				'title'             => esc_html__( 'Title', 'local-pickup-for-woocommerce' ),
             );
@@ -96,6 +97,31 @@ if ( ! class_exists( 'DSLPFW_Pickup_Location_List_Table' ) ) {
 			}
 
 			return sprintf( '<input type="checkbox" name="%1$s[]" value="%2$s" />', 'method_id_cb', esc_attr( $item->ID ) );
+		}
+
+		/**
+		 * Output the drag handle column.
+		 *
+		 * @param object $item list table row item.
+		 * @return string
+		 * @since 1.1.3
+		 */
+		public function column_drag( $item ) {
+			if ( ! $item->ID ) {
+				return '';
+			}
+
+			return '<span class="dashicons handle" aria-hidden="true"></span>';
+		}
+
+		/**
+		 * Gets the name of the primary column.
+		 *
+		 * @return string
+		 * @since 1.1.3
+		 */
+		protected function get_primary_column_name() {
+			return 'title';
 		}
 
         /**

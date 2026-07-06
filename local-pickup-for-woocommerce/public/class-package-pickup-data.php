@@ -123,16 +123,14 @@ class DSLPFW_Package_Pickup_Data {
 	 */
 	public function get_pickup_location_id() {
 
-        $query_args = array();
-        $query_args['posts_per_page'] = 1;
-        $query_args['nopaging'] = false;
-        $query_args['fields'] = 'ids';
+		$pickup_location_id = (int) $this->get_package_key( 'pickup_location_id', 0 );
 
-        $pickup_locations = dslpfw()->get_dslpfw_pickup_locations_object()->get_pickup_locations($query_args);
+		if ( 0 === $pickup_location_id ) {
+			$session_location_id = dslpfw()->get_dslpfw_session_object()->get_package_pickup_data( $this->object_id, 'pickup_location_id' );
+			$pickup_location_id    = ! empty( $session_location_id ) ? (int) $session_location_id : 0;
+		}
 
-        $default_pickup_location_id = is_array($pickup_locations) && isset($pickup_locations[0]) && !empty($pickup_locations[0]) ? $pickup_locations[0] : 0;
-        
-		return $this->get_package_key( 'pickup_location_id', $default_pickup_location_id );
+		return $pickup_location_id;
 	}
 
     /**
@@ -144,9 +142,47 @@ class DSLPFW_Package_Pickup_Data {
 	 */
 	public function get_pickup_location() {
 
+		$package            = $this->get_package();
 		$pickup_location_id = $this->get_pickup_location_id();
-		$pickup_location_id = 0 === $pickup_location_id ? dslpfw()->get_dslpfw_packages_object()->get_package_only_pickup_location_id( $this->get_package() ) : $pickup_location_id;
+
+		if ( 0 === $pickup_location_id ) {
+			$pickup_location_id = dslpfw()->get_dslpfw_packages_object()->get_package_only_pickup_location_id( $package );
+		}
+
+		if ( 0 === $pickup_location_id ) {
+			$pickup_location_id = $this->resolve_default_pickup_location_id( $package );
+		}
 
 		return $pickup_location_id > 0 ? dslpfw_get_pickup_location( $pickup_location_id ) : null;
+	}
+
+	/**
+	 * Resolves a default pickup location ID for a package when none is stored yet.
+	 *
+	 * @since 1.1.3
+	 *
+	 * @param array $package WooCommerce shipping package.
+	 * @return int
+	 */
+	private function resolve_default_pickup_location_id( $package ) {
+
+		$available_count = dslpfw_count_package_available_pickup_locations( $package );
+		$context         = array(
+			'package'    => $package,
+			'package_id' => $this->object_id,
+		);
+
+		if ( dslpfw_should_auto_select_pickup_location( $available_count, $context ) ) {
+			return dslpfw_get_first_available_pickup_location_id( null, $package );
+		}
+
+		$user_default = dslpfw_get_user_default_pickup_location();
+
+		if ( $user_default instanceof \DSLPFW_Local_Pickup_WooCommerce_Pickup_Location
+			&& dslpfw_package_can_use_pickup_location( $package, $user_default ) ) {
+			return (int) $user_default->get_id();
+		}
+
+		return 0;
 	}
 }

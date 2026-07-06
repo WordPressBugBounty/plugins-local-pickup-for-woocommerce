@@ -177,7 +177,7 @@ foreach ( $all_countries as $country_code => $country_name ) {
 ?>
                             </select>
                             <p class="description"><?php 
-esc_html_e( 'Hold down the Ctrl (windows) or Command (Mac) button to select multiple countries.', 'local-pickup-for-woocommerce' );
+esc_html_e( 'Hold down the Ctrl (Windows) or Command (Mac) button to select multiple countries.', 'local-pickup-for-woocommerce' );
 ?></p>
                         </td>
                     </tr>
@@ -341,6 +341,9 @@ esc_html_e( 'Alphabetical by location name', 'local-pickup-for-woocommerce' );
 ?></option>          
                                     <option value="date_added"><?php 
 esc_html_e( 'Most recently added location', 'local-pickup-for-woocommerce' );
+?></option>          
+                                    <option value="nearby_address"><?php 
+esc_html_e( 'Nearest to customer address', 'local-pickup-for-woocommerce' );
 ?></option>          
                                 </select>
                             </td>

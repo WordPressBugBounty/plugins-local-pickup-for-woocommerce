@@ -96,6 +96,7 @@ input[type=checkbox]:focus,input[type=radio]:focus{border-color:var(--dotstore-p
 .dots-settings-inner-main .wp-list-table th a {padding: 14px 8px;color:#000;}
 .dslpfw-section-left table.table-outer.dslpfw-table-tooltip tr th label, .dslpfw-section-left table.table-outer.dslpfw-table-tooltip tr td label {display: block;vertical-align: middle;position: relative;}
 .dslpfw-section-left .search-box { padding-top: 10px;}
+.dots-settings-inner-main .wp-list-table .dashicons{background-image:url("../images/move-icon.svg");background-size: 20px;}
 
 /* Import/Export page CSS */
 .dslpfw-import-file {text-align: left;background: var(--dotstore-primary-light);padding: 10px;width: 620px;position: relative;border-radius: 5px;border: 1px solid var(--dotstore-primary);margin-top: 5px;}
@@ -271,3 +272,9 @@ body.dslpfw-modal-visible{overflow:hidden;}
 .dslpfw-section-left .dslpfw-pro-label::before{content:"🔒";display:inline-block;font-size:15px;line-height:normal;}
 .dslpfw-section-left .dslpfw-pro-feature .ui-datepicker{opacity:0.5;pointer-events:none;}
 .dslpfw-section-left .dslpfw-upgrade-to-unlock tr{opacity:0.5;pointer-events:none;}
+
+.dslpfw-main-table table th#drag,.dslpfw-main-table table td.column-drag{width:1%;text-align:center;padding-left:8px;padding-right:8px;}
+.dslpfw-main-table table tbody .column-drag{cursor:grab;}
+.dslpfw-main-table table tbody .column-drag .handle{color:#787c82;font-size:18px;width:18px;height:18px;}
+.dslpfw-main-table table tbody .column-drag .row-actions{display:none;}
+.dslpfw-pickup-location-sortable #the-list.ui-sortable .ui-sortable-placeholder td{border:2px dashed #c3c4c7;background-color:#f6f7f7;height:48px;}

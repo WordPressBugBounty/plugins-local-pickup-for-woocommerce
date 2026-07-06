@@ -180,6 +180,9 @@ class DSLPFW_Local_Pickup_Woocommerce_Admin {
             wp_enqueue_script( 'jquery-ui-slider' );
             wp_enqueue_script( 'selectWoo' );
         }
+        if ( false !== strpos( $hook, 'dslpfw-pickup-location-list' ) && self::dslpfw_is_pickup_location_sortable_list() ) {
+            wp_enqueue_script( 'jquery-ui-sortable' );
+        }
         if ( strpos( $hook, '_page_dslpfw-import-export' ) !== false ) {
             wp_enqueue_script(
                 $this->plugin_name . '-import-export',
@@ -207,17 +210,21 @@ class DSLPFW_Local_Pickup_Woocommerce_Admin {
             $this->version,
             false
         );
+        $admin_script_deps = array(
+            'jquery',
+            'jquery-tiptip',
+            'selectWoo',
+            'wc-enhanced-select',
+            'jquery-blockui',
+            'jquery-ui-datepicker'
+        );
+        if ( false !== strpos( $hook, 'dslpfw-pickup-location-list' ) && self::dslpfw_is_pickup_location_sortable_list() ) {
+            $admin_script_deps[] = 'jquery-ui-sortable';
+        }
         wp_enqueue_script(
             $this->plugin_name,
             plugin_dir_url( __FILE__ ) . 'js/local-pickup-woocommerce-admin.js',
-            array(
-                'jquery',
-                'jquery-tiptip',
-                'selectWoo',
-                'wc-enhanced-select',
-                'jquery-blockui',
-                'jquery-ui-datepicker'
-            ),
+            $admin_script_deps,
             $this->version,
             false
         );
@@ -233,6 +240,8 @@ class DSLPFW_Local_Pickup_Woocommerce_Admin {
             'select2_per_product_ajax'         => absint( apply_filters( 'dslpfw_json_product_search_limit', 10 ) ),
             'select2_per_category_ajax'        => absint( apply_filters( 'dslpfw_json_category_search_limit', 10 ) ),
             'delete_confirmation_message'      => esc_html__( 'Do you really want to proceed with the deletion?', 'local-pickup-for-woocommerce' ),
+            'pickup_location_sort_enabled'     => self::dslpfw_is_pickup_location_sortable_list(),
+            'pickup_location_sort_success'     => esc_html__( 'Pickup location order has been updated.', 'local-pickup-for-woocommerce' ),
         ) );
         wp_enqueue_script(
             'dslpfw-promotioanl-bar',
@@ -885,13 +894,101 @@ class DSLPFW_Local_Pickup_Woocommerce_Admin {
     }
 
     /**
+     * Save pickup location sort order from the listing page.
+     *
+     * @since 1.1.3
+     */
+    public function dslpfw_pickup_location_sort_order_callback() {
+        check_ajax_referer( 'dslpfw_global_nonce', 'nonce' );
+        if ( !current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( esc_html__( 'You do not have permission to update pickup location order.', 'local-pickup-for-woocommerce' ) );
+        }
+        $get_paged = filter_input( INPUT_GET, 'paged', FILTER_SANITIZE_NUMBER_INT );
+        $get_location_order = filter_input(
+            INPUT_GET,
+            'locationOrderArray',
+            FILTER_SANITIZE_NUMBER_INT,
+            FILTER_REQUIRE_ARRAY
+        );
+        $paged = ( !empty( $get_paged ) ? absint( $get_paged ) : 1 );
+        $location_order_array = ( !empty( $get_location_order ) ? array_map( 'absint', wp_unslash( $get_location_order ) ) : array() );
+        if ( empty( $location_order_array ) ) {
+            wp_send_json_error( esc_html__( 'No pickup locations found to sort.', 'local-pickup-for-woocommerce' ) );
+        }
+        $all_location_ids = get_posts( array(
+            'post_type'              => DSLPFW_POST_TYPE,
+            'post_status'            => 'any',
+            'posts_per_page'         => -1,
+            'orderby'                => array(
+                'menu_order' => 'ASC',
+                'post_date'  => 'DESC',
+            ),
+            'fields'                 => 'ids',
+            'no_found_rows'          => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
+        ) );
+        if ( empty( $all_location_ids ) ) {
+            wp_send_json_error( esc_html__( 'No pickup locations found to sort.', 'local-pickup-for-woocommerce' ) );
+        }
+        $per_page = $this->get_pickup_location_list_per_page();
+        $offset = (max( 1, $paged ) - 1) * $per_page;
+        foreach ( $location_order_array as $index => $location_id ) {
+            if ( !isset( $all_location_ids[$offset + $index] ) ) {
+                break;
+            }
+            $all_location_ids[$offset + $index] = $location_id;
+        }
+        foreach ( $all_location_ids as $menu_order => $location_id ) {
+            wp_update_post( array(
+                'ID'         => (int) $location_id,
+                'menu_order' => (int) $menu_order + 1,
+            ) );
+        }
+        wp_send_json_success( esc_html__( 'Pickup location order has been updated.', 'local-pickup-for-woocommerce' ) );
+    }
+
+    /**
+     * Gets the number of pickup locations shown per admin list page.
+     *
+     * @since 1.1.3
+     *
+     * @return int
+     */
+    private function get_pickup_location_list_per_page() {
+        $per_page = get_user_option( 'dslpfw_rule_per_page' );
+        if ( empty( $per_page ) ) {
+            $per_page = get_option( 'posts_per_page' );
+        }
+        return max( 1, (int) $per_page );
+    }
+
+    /**
+     * Whether drag-and-drop sorting is enabled on the pickup locations list.
+     *
+     * @since 1.1.3
+     *
+     * @return bool
+     */
+    public static function dslpfw_is_pickup_location_sortable_list() {
+        $get_action = filter_input( INPUT_GET, 'action', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+        $get_search = filter_input( INPUT_GET, 's', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+        $get_orderby = filter_input( INPUT_GET, 'orderby', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+        $get_status = filter_input( INPUT_GET, 'status', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+        if ( !empty( $get_action ) || !empty( $get_search ) || !empty( $get_orderby ) || !empty( $get_status ) ) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Based on message type prepare notice
      * 
      * @since    1.0.0
      * 
      */
     public function dslpfw_display_action_message() {
-        $message = filter_input( INPUT_GET, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+        $message = filter_input( INPUT_GET, 'dslpfw_message', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
         $message = ( isset( $message ) ? sanitize_text_field( $message ) : '' );
         if ( !empty( $message ) ) {
             if ( 'created' === $message ) {

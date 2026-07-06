@@ -389,7 +389,7 @@ class DSLPFW_Local_Pickup_WooCommerce_Packages {
 			$pickup_items          = array();
 			$ship_items            = array();
             $is_per_order_mode     = $ds_local_pickup->dslpfw_is_per_order_selection_enabled();
-			$default_location_id   = is_user_logged_in() ? get_user_meta( get_current_user_id(), '_default_pickup_location', true ) : 371;
+			$default_location_id   = is_user_logged_in() ? (int) get_user_meta( get_current_user_id(), '_default_pickup_location', true ) : 0;
 
             foreach ( $cart_items as $cart_item_key => $cart_item ) {
 
@@ -418,9 +418,29 @@ class DSLPFW_Local_Pickup_WooCommerce_Packages {
 						$cart_item_pickup_location_id = ! empty( $package_pickup_data['pickup_location_id'] ) ? $package_pickup_data['pickup_location_id'] : 0;
 					}
 
-					// if user has a default/preferred location set, use it
+					// if user has a default/preferred location set, use it when valid for this product
 					if ( ! $cart_item_pickup_location_id && $default_location_id > 0 ) {
-						$cart_item_pickup_location_id = $default_location_id;
+						$default_location = dslpfw_get_pickup_location( $default_location_id );
+						$product          = isset( $cart_item['data'] ) ? $cart_item['data'] : null;
+
+						if ( $default_location && $product instanceof \WC_Product && dslpfw_product_can_be_picked_up( $product, $default_location ) ) {
+							$cart_item_pickup_location_id = $default_location_id;
+						}
+					}
+
+					// legacy behavior: auto-select the first available location when the filter allows it
+					if ( ! $cart_item_pickup_location_id && ! $is_per_order_mode ) {
+						$product         = isset( $cart_item['data'] ) ? $cart_item['data'] : null;
+						$available_count = $product instanceof \WC_Product
+							? dslpfw()->get_dslpfw_products_object()->get_product_pickup_locations_count( $product )
+							: 0;
+
+						if ( $available_count > 1 && dslpfw_should_auto_select_pickup_location( $available_count, array(
+							'cart_item_key' => $cart_item_key,
+							'product'       => $product,
+						) ) ) {
+							$cart_item_pickup_location_id = dslpfw_get_first_available_pickup_location_id( $product );
+						}
 					}
                     
 					$pickup_items[ $cart_item_key ]                       = $cart_item;
