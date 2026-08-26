@@ -2,9 +2,9 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Local Pickup for WooCommerce 1.2.0\n"
+"Project-Id-Version: Local Pickup for WooCommerce 1.2.1\n"
 "Report-Msgid-Bugs-To: https://www.multidots.com/contact/\n"
-"POT-Creation-Date: 2026-07-06 13:18:17+00:00\n"
+"POT-Creation-Date: 2026-08-26 10:26:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -256,13 +256,6 @@ msgstr ""
 msgid "You do not have sufficient permissions"
 msgstr ""
 
-#: admin/class-local-pickup-woocommerce-admin.php:2131
-msgid ""
-"%2$s%1$s for WooCommerce%3$s does not support block based cart and checkout "
-"page. This may impact the shopper experience. Please use the default "
-"shortcode based cart and checkout page."
-msgstr ""
-
 #: admin/class-local-pickup-woocommerce-pickup-location-appointments.php:152
 #: admin/class-local-pickup-woocommerce-pickup-location-appointments.php:373
 msgid "Could not calculate first available pickup time with lead time %1$: %2$s"
@@ -407,44 +400,52 @@ msgstr ""
 msgid "Pickup location title"
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:41
+#: admin/partials/dots-upgrade-popup.php:53
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:48
+#: admin/partials/dots-upgrade-popup.php:61
+msgid "⚡ Limited-time Offer"
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:67
 msgid "Unlock Premium Features with a %s%% Discount!"
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:52
+#: admin/partials/dots-upgrade-popup.php:71
 msgid "Unlock Premium Features Today!"
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:56
+#: admin/partials/dots-upgrade-popup.php:75
 msgid ""
 "Unlock a world of possibilities for your WooCommerce store with our Premium "
 "Local Pickup plugin!"
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:58
+#: admin/partials/dots-upgrade-popup.php:77
 msgid "Select public holidays to exclude from the pickup schedule."
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:59
+#: admin/partials/dots-upgrade-popup.php:78
 msgid "Set specific products or categories based pickup locations."
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:60
+#: admin/partials/dots-upgrade-popup.php:79
 msgid "Adjust fee or discount for selected pickup location."
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:61
+#: admin/partials/dots-upgrade-popup.php:80
 msgid "Define default lead times and deadlines for pickups."
 msgstr ""
 
-#: admin/partials/dots-upgrade-popup.php:65
+#: admin/partials/dots-upgrade-popup.php:84
 #: admin/partials/header/plugin-header.php:71
 #: admin/partials/header/plugin-header.php:76
 msgid "Upgrade Now"
+msgstr ""
+
+#: admin/partials/dots-upgrade-popup.php:88
+msgid "⏱️ Offer ends on:"
 msgstr ""
 
 #: admin/partials/dslpfw-get-started-page.php:18
@@ -1565,7 +1566,7 @@ msgid "Plugin LOGO"
 msgstr ""
 
 #: admin/partials/header/plugin-header.php:49
-#: includes/class-local-pickup-woocommerce.php:496
+#: includes/class-local-pickup-woocommerce.php:501
 msgid "Support"
 msgstr ""
 
@@ -1586,7 +1587,7 @@ msgid "Global Settings"
 msgstr ""
 
 #: admin/partials/header/plugin-header.php:94
-#: includes/class-local-pickup-woocommerce.php:486
+#: includes/class-local-pickup-woocommerce.php:491
 msgid "Settings"
 msgstr ""
 
@@ -1604,6 +1605,85 @@ msgstr ""
 
 #: admin/partials/header/plugin-header.php:130
 msgid "Shop Plugins"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:96
+#: public/class-local-pickup-woocommerce-public.php:166
+msgid "Choose a pickup date"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:98
+#: public/partials/class-pickup-location-field.php:311
+msgid "Select a pickup location"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:99
+msgid "This item is set for shipping. Click here to pickup this item."
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:100
+msgid "This item is set for pickup. Click here to ship this item."
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:101
+msgid "Click here to pickup this item."
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:102
+msgid "Click here to ship this item."
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:103
+msgid "Schedule a pickup appointment"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:104
+#: public/partials/class-package-pickup-appointment-field.php:141
+msgid "(optional)"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:107
+#: public/partials/class-package-pickup-appointment-field.php:267
+#. translators: Placeholder: %1$s - day of the week name, %2$s - location
+#. timezone
+msgid "Available pickup times on %1$s (all times in %2$s):"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:108
+#: public/class-local-pickup-woocommerce-public.php:1024
+#: public/partials/class-package-pickup-appointment-field.php:304
+#. translators: Placeholder: %s - day of the week name
+msgid "Opening hours for pickup on %s:"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:109
+#: public/partials/class-package-pickup-location-field.php:142
+msgid "Please choose a pickup location"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:110
+#: public/partials/class-package-pickup-location-field.php:134
+msgid "Note:"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:111
+msgid "Updating…"
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:559
+msgid "Please select a pickup location for each item set for pickup."
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:569
+#: public/class-local-pickup-woocommerce-public.php:1277
+#. translators: %s: shipping method title
+#. translators: Placeholder: %s - user assigned name for Local Pickup
+#. WooCommerce shipping method
+msgid "Please select a pickup location if you intend to use %s as shipping method."
+msgstr ""
+
+#: includes/class-local-pickup-woocommerce-blocks.php:581
+msgid "Please schedule a pickup appointment."
 msgstr ""
 
 #: includes/class-local-pickup-woocommerce-orders.php:465
@@ -1654,50 +1734,34 @@ msgstr ""
 msgid "%s (discount!)"
 msgstr ""
 
-#: includes/class-local-pickup-woocommerce.php:491
+#: includes/class-local-pickup-woocommerce.php:496
 msgid "Docs"
 msgstr ""
 
-#: includes/class-local-pickup-woocommerce.php:738
+#: includes/class-local-pickup-woocommerce.php:788
 msgid "Activate Plugin"
 msgstr ""
 
-#: public/class-local-pickup-woocommerce-public.php:166
-msgid "Choose a pickup date"
-msgstr ""
-
-#: public/class-local-pickup-woocommerce-public.php:537
+#: public/class-local-pickup-woocommerce-public.php:553
 msgid "Enter your address to see all available shipping options."
 msgstr ""
 
-#: public/class-local-pickup-woocommerce-public.php:1000
-#: public/partials/class-package-pickup-appointment-field.php:304
-#. translators: Placeholder: %s - day of the week name
-msgid "Opening hours for pickup on %s:"
-msgstr ""
-
-#: public/class-local-pickup-woocommerce-public.php:1099
+#: public/class-local-pickup-woocommerce-public.php:1123
 #. translators: Placeholder: %s - shipping method title (e.g. Local Pickup)
 msgid "%s discount"
 msgstr ""
 
-#: public/class-local-pickup-woocommerce-public.php:1255
-#. translators: Placeholder: %s - user assigned name for Local Pickup
-#. WooCommerce shipping method
-msgid "Please select a pickup location if you intend to use %s as shipping method."
-msgstr ""
-
-#: public/class-local-pickup-woocommerce-public.php:1296
+#: public/class-local-pickup-woocommerce-public.php:1318
 msgid "Please select a pickup location for each item set for local pickup."
 msgstr ""
 
-#: public/class-local-pickup-woocommerce-public.php:1308
+#: public/class-local-pickup-woocommerce-public.php:1330
 #. translators: Placeholder: %s - user assigned name for Local Pickup
 #. WooCommerce shipping method
 msgid "Please choose a date to schedule a pickup when using %s shipping method."
 msgstr ""
 
-#: public/class-local-pickup-woocommerce-public.php:1346
+#: public/class-local-pickup-woocommerce-public.php:1368
 msgid ""
 "Oops! That appointment time is no longer available. Please select a new "
 "appointment."
@@ -1739,10 +1803,6 @@ msgstr ""
 msgid "Schedule a pickup appointment %s"
 msgstr ""
 
-#: public/partials/class-package-pickup-appointment-field.php:141
-msgid "(optional)"
-msgstr ""
-
 #: public/partials/class-package-pickup-appointment-field.php:143
 msgid "Required"
 msgstr ""
@@ -1750,12 +1810,6 @@ msgstr ""
 #: public/partials/class-package-pickup-appointment-field.php:146
 #: public/partials/class-package-pickup-appointment-field.php:149
 msgid "Schedule a pickup appointment (optional)"
-msgstr ""
-
-#: public/partials/class-package-pickup-appointment-field.php:267
-#. translators: Placeholder: %1$s - day of the week name, %2$s - location
-#. timezone
-msgid "Available pickup times on %1$s (all times in %2$s):"
 msgstr ""
 
 #: public/partials/class-package-pickup-appointment-field.php:269
@@ -1775,21 +1829,9 @@ msgstr ""
 msgid "Pickup Location: %s"
 msgstr ""
 
-#: public/partials/class-package-pickup-location-field.php:134
-msgid "Note:"
-msgstr ""
-
-#: public/partials/class-package-pickup-location-field.php:142
-msgid "Please choose a pickup location"
-msgstr ""
-
 #: public/partials/class-pickup-location-field.php:224
 #. translators: Placeholder: %s - pickup location name
 msgid "Available for pickup at: %s"
-msgstr ""
-
-#: public/partials/class-pickup-location-field.php:311
-msgid "Select a pickup location"
 msgstr ""
 
 #: admin/class-local-pickup-woocommerce-admin.php:724
@@ -1802,13 +1844,7 @@ msgctxt "Post Type Singular Name"
 msgid "Pickup Location"
 msgstr ""
 
-#: public/class-local-pickup-woocommerce-public.php:774
-#. translators: Placeholders: %1$s - shipping method name, %2$d package count
-#. number
-msgctxt "shipping packages"
-msgid "%1$s %2$d"
-msgstr ""
-
+#: includes/class-local-pickup-woocommerce-blocks.php:105
 #: public/partials/class-package-pickup-appointment-field.php:169
 #: public/partials/class-package-pickup-appointment-field.php:183
 #: public/partials/class-package-pickup-appointment-field.php:197
@@ -1816,9 +1852,17 @@ msgctxt "Placeholder text for the datepicker field"
 msgid "Pickup Date"
 msgstr ""
 
+#: includes/class-local-pickup-woocommerce-blocks.php:106
 #: public/partials/class-package-pickup-appointment-field.php:216
 #: public/partials/class-package-pickup-appointment-field.php:224
 #: public/partials/class-package-pickup-appointment-field.php:232
 msgctxt "Clear a chosen pickup appointment date"
 msgid "Clear"
+msgstr ""
+
+#: public/class-local-pickup-woocommerce-public.php:798
+#. translators: Placeholders: %1$s - shipping method name, %2$d package count
+#. number
+msgctxt "shipping packages"
+msgid "%1$s %2$d"
 msgstr ""

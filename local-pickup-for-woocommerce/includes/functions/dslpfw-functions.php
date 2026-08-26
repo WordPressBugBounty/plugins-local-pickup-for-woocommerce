@@ -298,7 +298,143 @@ function dslpfw_get_first_available_pickup_location_id( $product = null, $packag
 
 // Pickup Locations Functions End
 
+/**
+ * Get pickup location, date, and appointment data posted at checkout for all packages.
+ *
+ * @since 1.2.1
+ *
+ * @return array {
+ *     @type array $pickup_location_ids     Package key to pickup location ID.
+ *     @type array $pickup_dates            Package key to pickup date string.
+ *     @type array $appointment_offsets     Package key to appointment offset.
+ * }
+ */
+function dslpfw_get_checkout_package_pickup_post_data() {
 
+	$filter = array(
+		'_shipping_method_pickup_location_id' => array(
+			'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'flags'  => FILTER_REQUIRE_ARRAY,
+		),
+		'_shipping_method_pickup_date' => array(
+			'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'flags'  => FILTER_REQUIRE_ARRAY,
+		),
+		'_shipping_method_pickup_appointment_offset' => array(
+			'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'flags'  => FILTER_REQUIRE_ARRAY,
+		),
+	);
+
+	$posted_data = filter_input_array( INPUT_POST, $filter );
+
+	return array(
+		'pickup_location_ids' => isset( $posted_data['_shipping_method_pickup_location_id'] ) && is_array( $posted_data['_shipping_method_pickup_location_id'] ) ? $posted_data['_shipping_method_pickup_location_id'] : array(),
+		'pickup_dates'        => isset( $posted_data['_shipping_method_pickup_date'] ) && is_array( $posted_data['_shipping_method_pickup_date'] ) ? $posted_data['_shipping_method_pickup_date'] : array(),
+		'appointment_offsets' => isset( $posted_data['_shipping_method_pickup_appointment_offset'] ) && is_array( $posted_data['_shipping_method_pickup_appointment_offset'] ) ? $posted_data['_shipping_method_pickup_appointment_offset'] : array(),
+	);
+}
+
+/**
+ * Get checkout pickup data for a package, falling back to session when form fields are missing.
+ *
+ * Custom checkout layouts (e.g. Divi Builder) may render pickup fields outside the checkout form,
+ * so the customer's selection may only exist in session after AJAX updates.
+ *
+ * @since 1.2.1
+ *
+ * @param int|string $package_key shipping package key
+ * @return array {
+ *     @type int    $pickup_location_id Pickup location post ID.
+ *     @type string $pickup_date        Pickup date string.
+ *     @type int    $appointment_offset   Appointment offset in seconds.
+ * }
+ */
+function dslpfw_get_checkout_package_pickup_data( $package_key ) {
+
+	$post_data = dslpfw_get_checkout_package_pickup_post_data();
+
+	$pickup_data = array(
+		'pickup_location_id' => ! empty( $post_data['pickup_location_ids'][ $package_key ] ) ? (int) $post_data['pickup_location_ids'][ $package_key ] : 0,
+		'pickup_date'        => ! empty( $post_data['pickup_dates'][ $package_key ] ) ? trim( (string) $post_data['pickup_dates'][ $package_key ] ) : '',
+		'appointment_offset' => isset( $post_data['appointment_offsets'][ $package_key ] ) && '' !== $post_data['appointment_offsets'][ $package_key ] ? (int) $post_data['appointment_offsets'][ $package_key ] : '',
+	);
+
+	if ( WC()->session && ( 0 === $pickup_data['pickup_location_id'] || '' === $pickup_data['pickup_date'] || '' === $pickup_data['appointment_offset'] ) ) {
+
+		$session_data = dslpfw()->get_dslpfw_session_object()->get_package_pickup_data( $package_key );
+
+		if ( 0 === $pickup_data['pickup_location_id'] && ! empty( $session_data['pickup_location_id'] ) ) {
+			$pickup_data['pickup_location_id'] = (int) $session_data['pickup_location_id'];
+		}
+
+		if ( '' === $pickup_data['pickup_date'] && ! empty( $session_data['pickup_date'] ) ) {
+			$pickup_data['pickup_date'] = trim( (string) $session_data['pickup_date'] );
+		}
+
+		if ( '' === $pickup_data['appointment_offset'] && isset( $session_data['appointment_offset'] ) && '' !== $session_data['appointment_offset'] ) {
+			$pickup_data['appointment_offset'] = (int) $session_data['appointment_offset'];
+		}
+	}
+
+	return $pickup_data;
+}
+
+/**
+ * Map cart item keys to package keys for items meant for local pickup at checkout.
+ *
+ * @since 1.2.1
+ *
+ * @return array<string, string> Cart item key to package key (e.g. package_0).
+ */
+function dslpfw_get_checkout_pickup_items_cart_package_map() {
+
+	$cart_item_keys = array();
+
+	$filter = array(
+		'dslpfw_pickup_items' => array(
+			'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+			'flags'  => FILTER_REQUIRE_ARRAY,
+		),
+	);
+
+	$posted_data = filter_input_array( INPUT_POST, $filter );
+
+	if ( ! empty( $posted_data['dslpfw_pickup_items'] ) && is_array( $posted_data['dslpfw_pickup_items'] ) ) {
+
+		foreach ( $posted_data['dslpfw_pickup_items'] as $package_key => $item_keys ) {
+
+			foreach ( explode( ',', (string) $item_keys ) as $item_key ) {
+				$cart_item_keys[ trim( $item_key ) ] = "package_{$package_key}";
+			}
+		}
+
+		return $cart_item_keys;
+	}
+
+	if ( ! WC()->shipping() || ! WC()->session ) {
+		return $cart_item_keys;
+	}
+
+	$packages             = WC()->shipping()->get_packages();
+	$local_pickup_method  = dslpfw_shipping_method_id();
+	$chosen_methods       = WC()->session->get( 'chosen_shipping_methods', array() );
+
+	foreach ( $packages as $package_key => $package ) {
+
+		$chosen_method = isset( $chosen_methods[ $package_key ] ) ? $chosen_methods[ $package_key ] : '';
+
+		if ( $local_pickup_method !== $chosen_method || empty( $package['contents'] ) || ! is_array( $package['contents'] ) ) {
+			continue;
+		}
+
+		foreach ( array_keys( $package['contents'] ) as $cart_item_key ) {
+			$cart_item_keys[ trim( (string) $cart_item_key ) ] = "package_{$package_key}";
+		}
+	}
+
+	return $cart_item_keys;
+}
 
 /**
  * Get the shipping method.

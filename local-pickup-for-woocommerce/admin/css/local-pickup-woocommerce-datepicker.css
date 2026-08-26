@@ -12,6 +12,6 @@
 .datepicker .ui-datepicker .ui-datepicker-calendar tr td {font-size: 16px;padding: 10px;text-align: center;}
 .datepicker .ui-datepicker .ui-datepicker-calendar tr td .ui-state-default:not(.ui-state-disabled):hover {background-color: var(--dotstore-primary);opacity: 0.6;color: #fff;}
 .ui-state-default.ui-state-highlight {color: var(--dotstore-primary);font-weight: 700;}
-.ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{border: none;background: transparent;text-align: center;height: 40px;width: 40px;border-radius: 50%;padding: 10px;display: inline-block;}
+.ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{border: none;background: transparent;text-align: center;height: 40px;width: 40px;border-radius: 50%;padding: 0;display: inline-block;}
 .dslpfw-selected a.ui-state-default, .dslpfw-selected .ui-state-default.ui-state-highlight{color: #fff;background: var(--dotstore-primary);}
 .ui-widget-header .ui-icon {background-image: url(../images/icons/datepicker-next.svg);background-position: 0;background-size: 30px;width: 30px;height: 30px;}

@@ -1,0 +1,291 @@
+/* Local Pickup — Cart & Checkout Blocks UI */
+
+.dslpfw-blocks-cart-item,
+.dslpfw-blocks-package,
+.dslpfw-blocks-checkout {
+	margin-top: 0.5rem;
+	width: 100%;
+	max-width: 100%;
+}
+
+.dslpfw-blocks-cart-item.is-busy,
+.dslpfw-blocks-package.is-busy {
+	opacity: 0.65;
+	pointer-events: none;
+}
+
+.dslpfw-blocks-location-wrap,
+.dslpfw-blocks-selected-location {
+	margin: 0.35rem 0;
+}
+
+.dslpfw-blocks-location-select,
+.dslpfw-blocks-appointment-date,
+.dslpfw-blocks-appointment-time {
+	width: 100%;
+	max-width: 100%;
+	min-height: 2.25rem;
+	padding: 0.5rem 0.65rem;
+	border: 1px solid #1e1e1e;
+	border-radius: 2px;
+	background: #fff;
+	font-size: 0.95rem;
+	line-height: 1.3;
+	color: #1e1e1e;
+	box-sizing: border-box;
+}
+
+.dslpfw-blocks-date-field {
+	position: relative;
+	width: 100%;
+	margin: 0.25rem 0 0;
+}
+
+.dslpfw-blocks-date-field .dslpfw-blocks-appointment-date {
+	padding-right: 2.5rem;
+	cursor: pointer;
+}
+
+.dslpfw-blocks-date-field .ui-datepicker-trigger {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 0;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: transparent !important;
+	border: 0;
+	outline: 0;
+	box-shadow: none;
+	padding: 0;
+}
+
+.dslpfw-blocks-date-field .ui-datepicker-trigger::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-image: url(../images/icons/datepicker-calender-icon.svg);
+	background-position: 0;
+	background-size: 25px;
+	width: 25px;
+	height: 25px;
+}
+
+/* Blocks checkout datepicker popup */
+.ui-datepicker.dslpfw-blocks-datepicker,
+.dslpfw-blocks-datepicker.ui-datepicker {
+	font-family: inherit;
+	width: auto;
+	min-width: 280px;
+	z-index: 100000 !important;
+	border: 1px solid #c3c4c7;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	padding: 0.5rem;
+	background: #fff;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-header {
+	background: #dedede;
+	border: none;
+	border-radius: 0;
+	padding: 0.35rem 0;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-title {
+	display: flex;
+	flex-wrap: nowrap;
+	margin: 0 !important;
+	padding: 0 40px;
+	justify-content: space-between;
+	line-height: 1.8;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-header select.ui-datepicker-month,
+.dslpfw-blocks-datepicker .ui-datepicker-header select.ui-datepicker-year {
+	max-width: 49%;
+	min-width: 49%;
+	width: 100%;
+	font-size: 14px;
+	padding: 4px;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-prev,
+.dslpfw-blocks-datepicker .ui-datepicker-next {
+	width: 30px;
+	height: 30px;
+	top: 4px;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-next {
+	right: 8px;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-prev {
+	left: 8px;
+	transform: rotate(180deg);
+	top: 10px;
+}
+
+.dslpfw-blocks-datepicker .ui-icon {
+	background-image: url(../images/icons/datepicker-next.svg);
+	background-position: 0;
+	background-size: 30px;
+	width: 30px;
+	height: 30px;
+	text-indent: -9999px;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-calendar {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-calendar th {
+	font-weight: 700;
+	background-color: #e0e0e0;
+	font-size: 13px;
+	padding: 0.35rem 0;
+	text-align: center;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-calendar td {
+	font-size: 14px;
+	padding: 1px;
+	text-align: center;
+}
+
+.dslpfw-blocks-datepicker .ui-state-default {
+	border: none !important;
+	background: transparent !important;
+	text-align: center;
+	height: 36px;
+	width: 36px;
+	border-radius: 50%;
+	padding: 0;
+	display: inline-block;
+	line-height: 36px;
+	color: #1e1e1e;
+}
+
+.dslpfw-blocks-datepicker td.dslpfw_available .ui-state-default:hover {
+	background-color: #000 !important;
+	opacity: 0.65;
+	color: #fff !important;
+}
+
+.dslpfw-blocks-datepicker .ui-state-active,
+.dslpfw-blocks-datepicker .ui-state-highlight.ui-state-active,
+.dslpfw-blocks-datepicker td.dslpfw-selected .ui-state-default {
+	color: #fff !important;
+	background: #000 !important;
+}
+
+.dslpfw-blocks-datepicker .ui-datepicker-today .ui-state-default {
+	font-weight: 700;
+}
+
+.dslpfw-blocks-datepicker td.ui-datepicker-unselectable .ui-state-default,
+.dslpfw-blocks-datepicker td.dslpfw_unavailable .ui-state-default,
+.dslpfw-blocks-datepicker .ui-state-disabled .ui-state-default {
+	opacity: 0.35;
+	color: #8c8f94 !important;
+	cursor: not-allowed;
+	text-decoration: line-through;
+	background: transparent !important;
+}
+
+.dslpfw-blocks-appointment-host .dslpfw-blocks-location-select,
+.dslpfw-blocks-appointment-host .dslpfw-blocks-appointment-date,
+.dslpfw-blocks-appointment-host .dslpfw-blocks-appointment-time {
+	max-width: 100%;
+}
+
+
+.dslpfw-blocks-handling-toggle {
+	margin: 0.35rem 0 0;
+	font-size: 0.85rem;
+	line-height: 1.4;
+}
+
+.dslpfw-blocks-handling-toggle a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.dslpfw-blocks-location-address {
+	font-size: 0.85rem;
+	line-height: 1.4;
+	margin-top: 0.25rem;
+}
+
+.dslpfw-blocks-location-note {
+	display: block;
+	margin-top: 0.35rem;
+	font-size: 0.8rem;
+}
+
+.dslpfw-blocks-appointment {
+	margin-top: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.dslpfw-blocks-appointment-label {
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.dslpfw-blocks-clear-date {
+	font-size: 0.8rem;
+	width: fit-content;
+}
+
+.dslpfw-blocks-schedule {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	margin-top: 0.25rem;
+}
+
+.dslpfw-blocks-schedule ul {
+	margin: 0;
+	padding-left: 1.1rem;
+}
+
+.dslpfw-blocks-cart-item-host {
+	width: 100%;
+}
+
+/* Checkout order summary: keep controls compact */
+.wc-block-components-order-summary-item__description .dslpfw-blocks-cart-item {
+	margin-top: 0.4rem;
+}
+
+.wc-block-components-order-summary-item__description .dslpfw-blocks-location-select {
+	max-width: 100%;
+}
+
+.dslpfw-blocks-appointment-host {
+	margin: 0.75rem 0 1rem;
+	padding: 0.75rem 0 0.75rem 16px;
+	border-top: 1px solid #e0e0e0;
+	width: calc(100% - 16px);
+}
+
+.dslpfw-blocks-appointment-host .dslpfw-blocks-checkout {
+	margin: 0;
+}
+
+.dslpfw-blocks-appointment-host .dslpfw-blocks-location-select,
+.dslpfw-blocks-appointment-host .dslpfw-blocks-appointment-date,
+.dslpfw-blocks-appointment-host .dslpfw-blocks-appointment-time {
+	max-width: 100%;
+}

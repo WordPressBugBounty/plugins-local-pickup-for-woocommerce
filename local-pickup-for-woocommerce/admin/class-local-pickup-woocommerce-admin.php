@@ -2031,20 +2031,8 @@ class DSLPFW_Local_Pickup_Woocommerce_Admin {
      * @since 1.1.2
      */
     public function dslpfw_add_block_based_cart_checkout_notice() {
-        if ( strpos( get_current_screen()->id, 'dslpfw' ) !== false && ($this->dslpfw_is_block_checkout() || $this->dslpfw_is_block_cart()) ) {
-            ?>
-            <div class="error notice is-dismissible">
-                <p><?php 
-            echo sprintf(
-                esc_html__( '%2$s%1$s for WooCommerce%3$s does not support block based cart and checkout page. This may impact the shopper experience. Please use the default shortcode based cart and checkout page.', 'local-pickup-for-woocommerce' ),
-                esc_html( DSLPFW_PLUGIN_NAME ),
-                '<strong>',
-                '</strong>'
-            );
-            ?></p>
-            </div>
-            <?php 
-        }
+        // Blocks are supported as of 1.2.1; keep notice disabled.
+        return;
     }
 
 }

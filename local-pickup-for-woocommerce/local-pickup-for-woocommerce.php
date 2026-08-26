@@ -4,7 +4,7 @@
  * Plugin Name:     Local Pickup for WooCommerce
  * Plugin URI:      https://www.thedotstore.com/local-pickup-for-woocommerce/
  * Description:     Our plugin provides store owners to set up local pickup spots, and customers can easily choose their preferred pickup location when buying.
- * Version:         1.2.0
+ * Version:         1.2.1
  * Author:          theDotstore
  * Author URI:      https://www.thedotstore.com/
  * License:         GPL-2.0+
@@ -19,8 +19,8 @@
  * @copyright         Copyright (c) 2012-2025, thDotstore.
  *
  * WC requires at least:    3.9.4
- * WP tested up to:         7.0
- * WC tested up to:         10.9.3
+ * WP tested up to:         7.1
+ * WC tested up to:         11.0.1
  * Requires PHP:            7.4
  * Requires at least:       5.0
  * Requires Plugins:        woocommerce
@@ -57,7 +57,7 @@ if ( function_exists( 'dslpfw_fs' ) ) {
                     ),
                     'menu'             => array(
                         'slug'       => 'dslpfw-local-pickup-settings',
-                        'first-path' => 'admin.php?page=dslpfw-local-pickup-settings',
+                        'first-path' => 'admin.php?page=dslpfw-local-pickup-settings&send-wizard-data=true',
                         'support'    => false,
                         'network'    => true,
                     ),
@@ -78,7 +78,7 @@ if ( function_exists( 'dslpfw_fs' ) ) {
  * Currently plugin version.
  */
 if ( !defined( 'DSLPFW_PLUGIN_VERSION' ) ) {
-    define( 'DSLPFW_PLUGIN_VERSION', 'v1.2.0' );
+    define( 'DSLPFW_PLUGIN_VERSION', 'v1.2.1' );
 }
 /**
  * Define the plugin's name if not already defined.

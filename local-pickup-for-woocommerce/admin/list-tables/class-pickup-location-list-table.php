@@ -389,7 +389,7 @@ if ( ! class_exists( 'DSLPFW_Pickup_Location_List_Table' ) ) {
 			$get_status  = filter_input( INPUT_GET, 'status', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 
 			$args = array(
-				'posts_per_page' => $per_page,
+				'posts_per_page' => $per_page, // phpcs:ignore
 				'orderby'        => array(
                     'menu_order'    => 'ASC',
                     'post_date'     => 'DESC',
@@ -466,7 +466,7 @@ if ( ! class_exists( 'DSLPFW_Pickup_Location_List_Table' ) ) {
 		public static function dslpfw_find( $args = '' ) {
 			$defaults = array(
 				'post_status'    => 'any',
-				'posts_per_page' => -1,
+				'posts_per_page' => -1, // phpcs:ignore
 				'offset'         => 0,
 				'orderby'        => array (
                     'ID' => 'ASC',

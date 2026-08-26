@@ -29,6 +29,18 @@ if ( ! is_wp_error( $get_discounts ) && ( 200 === wp_remote_retrieve_response_co
     
     $discount_number = isset( $final_discount['discount'] ) ? $final_discount['discount'] : '';
     $discount_coupon = isset( $final_discount['coupon'] ) ? $final_discount['coupon'] : '';
+    $discount_expiry = isset( $final_discount['expiry'] ) ? $final_discount['expiry'] : '';
+
+    // If the expiry has already passed, don't show a dead discount at all.
+    if ( ! empty( $discount_expiry ) ) {
+        $expiry_timestamp = strtotime( $discount_expiry . ' 23:59:59 UTC' );
+
+        if ( $expiry_timestamp !== false && $expiry_timestamp < current_time( 'timestamp', true ) ) {
+            $discount_number = 0;
+            $discount_coupon = '';
+            $discount_expiry = '';
+        }
+    }
 }
 ?>
 <!-- Upgrade to pro plugin popup -->
@@ -43,6 +55,13 @@ if ( ! is_wp_error( $get_discounts ) && ( 200 === wp_remote_retrieve_response_co
                 </div>
                 <div class="pro-modal-body">
                     <?php 
+                    if ( ! empty( $discount_expiry ) ) {
+                        ?>
+                        <div class="pro-modal-expiry-wrapper">
+                            <span class="pro-modal-expiry-label"><?php echo esc_html__( '⚡ Limited-time Offer', 'local-pickup-for-woocommerce' ); ?></span>
+                        </div>
+                        <?php
+                    }
                     if ( ! empty( $discount_number ) ) {
                         ?>
                         <h3 class="pro-feature-title"><?php echo sprintf( esc_html__( 'Unlock Premium Features with a %s%% Discount!', 'local-pickup-for-woocommerce' ), esc_html( $discount_number ) ); ?></h3>
@@ -63,6 +82,13 @@ if ( ! is_wp_error( $get_discounts ) && ( 200 === wp_remote_retrieve_response_co
                 </div>
                 <div class="pro-modal-footer">
                     <a class="pro-feature-trial-btn upgrade-now" target="_blank" href="javascript:void(0);"><?php esc_html_e( 'Upgrade Now', 'local-pickup-for-woocommerce' ); ?></a>
+                    <?php if ( ! empty( $discount_expiry ) ) { ?>
+                        <div class="pro-modal-expiry-wrapper">
+                            <p class="pro-modal-expiry-text">
+                                <strong><?php echo esc_html__( '⏱️ Offer ends on:', 'local-pickup-for-woocommerce' ); ?></strong> <?php echo esc_html( gmdate( 'F j, Y', strtotime( $discount_expiry ) ) ); ?>
+                            </p>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

@@ -267,6 +267,9 @@ body.dslpfw-modal-visible{overflow:hidden;}
 .upgrade-to-pro-modal-main .pro-feature-list li{font-size:15px;line-height:22px;color:#000;padding:0 0 12px 20px;position:relative;margin:0;}
 .upgrade-to-pro-modal-main .pro-feature-list li::before{content:'';background-color:var(--dotstore-primary);display:inline-block;font-size:0px;width:10px;margin-left:0em;position:absolute;left:0px;top:7px;height:10px;border-radius:50%;}
 .upgrade-to-pro-modal-main .pro-feature-list li:last-child{padding-bottom:0}
+.upgrade-to-pro-modal-main .pro-modal-expiry-wrapper{text-align:center;}
+.upgrade-to-pro-modal-main .pro-modal-expiry-label{border: 1px solid #d17c00;background-color: #fef2de;padding: 8px 12px 7px;text-transform: uppercase;color: #d17c00;font-weight: 600;display: inline-block;font-size: 12px;line-height: normal;border-radius: 30px;margin-bottom: 16px;}
+.upgrade-to-pro-modal-main .pro-modal-expiry-text{text-transform: capitalize;font-size: 14px;line-height: normal;margin: 18px 0 0;color: #707070;display: inline-block;}
 
 .dslpfw-section-left .dslpfw-pro-label{position:relative;cursor:pointer;display:inline-block;margin:1px 0 0 6px;}
 .dslpfw-section-left .dslpfw-pro-label::before{content:"🔒";display:inline-block;font-size:15px;line-height:normal;}

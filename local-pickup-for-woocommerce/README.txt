@@ -1,11 +1,11 @@
 === Local Pickup for WooCommerce ===
-Contributors: dots, jariwalasagar
+Contributors: dots, jariwalasagar, freemius
 Donate link: https://www.thedotstore.com/
 Tags: shiping method, woocommerce, local pickup, local, pickup
 Requires at least: 5.0
-Tested up to: 7.0
-WC tested up to: 10.9.3
-Stable tag: 1.2.0
+Tested up to: 7.1
+WC tested up to: 11.0.1
+Stable tag: 1.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -227,6 +227,13 @@ Click on the “Edit” link, go to Pickup Appointments Settings > Holiday Dates
 6. 
 
 == Changelog ==
+= 1.2.1 (26-08-2026) =
+* [New] Cart and Checkout Blocks compatibility (per-product pickup location, location change, date/time appointments)
+* [Bug] Min fix related to the Divi theme compatibility
+* [Enhancement] Declared compatibility with WooCommerce Cart & Checkout Blocks
+* [Enhancement] Compatible with WooCommerce 11.0.x
+* [Enhancement] Compatible with WordPress 7.1.x
+
 = 1.2.0 (06-07-2026) =
 * [Bug Fix] Resolved minor compatibility issues with the Contact Form 7 plugin
 * [Enhancement] Added an option to sort the pickup location display order

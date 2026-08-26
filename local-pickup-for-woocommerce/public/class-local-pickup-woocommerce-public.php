@@ -252,6 +252,13 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
      * @return array unfiltered item data (see method description)
      */
     public function dslpfw_add_cart_item_pickup_location_field_callback( $item_data, $cart_item ) {
+        // Avoid echoing classic markup on Cart Block pages (causes misplaced UI).
+        if ( function_exists( 'has_block' ) ) {
+            $cart_page_id = (int) get_option( 'woocommerce_cart_page_id' );
+            if ( $cart_page_id && has_block( 'woocommerce/cart', $cart_page_id ) ) {
+                return $item_data;
+            }
+        }
         if ( isset( $cart_item['cart_item_key'] ) && in_the_loop() && is_cart() ) {
             $ds_local_pickup = dslpfw_shipping_method();
             WC()->session->set( 'shipping_name', sanitize_text_field( $ds_local_pickup->get_method_title() ) );
@@ -414,6 +421,13 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
      * @param int|string $package_index the current package index
      */
     public function dslpfw_output_pickup_package_form( $shipping_rate, $package_index ) {
+        // Checkout Block uses the React UI instead of classic shipping-rate hooks.
+        if ( function_exists( 'has_block' ) ) {
+            $checkout_page_id = (int) get_option( 'woocommerce_checkout_page_id' );
+            if ( $checkout_page_id && has_block( 'woocommerce/checkout', $checkout_page_id ) ) {
+                return;
+            }
+        }
         $local_pickup_method = dslpfw_shipping_method();
         $lp_method_id = ( $local_pickup_method && $local_pickup_method->is_available() ? $local_pickup_method->get_method_id() : null );
         $package = dslpfw()->get_dslpfw_packages_object()->get_shipping_package( $package_index );
@@ -561,6 +575,13 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
      * @return string HTML
      */
     public function dslpfw_add_checkout_item_pickup_location_field_callback( $product_qty_html, $cart_item, $cart_item_key ) {
+        // Avoid classic markup on Checkout Block pages.
+        if ( function_exists( 'has_block' ) ) {
+            $checkout_page_id = (int) get_option( 'woocommerce_checkout_page_id' );
+            if ( $checkout_page_id && has_block( 'woocommerce/checkout', $checkout_page_id ) ) {
+                return $product_qty_html;
+            }
+        }
         if ( is_checkout() ) {
             $ds_local_pickup = dslpfw_shipping_method();
             if ( $ds_local_pickup->is_available() ) {
@@ -972,24 +993,10 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
         // check if there are any packages comes wtih our local pickup
         $local_pickup_packages = ( !empty( $shipping_methods ) ? array_keys( $shipping_methods, $local_pickup_method->get_method_id(), true ) : null );
         if ( $local_pickup_packages ) {
-            $pickup_data_filter = array(
-                '_shipping_method_pickup_location_id'        => array(
-                    'filter' => FILTER_SANITIZE_NUMBER_INT,
-                    'flags'  => FILTER_REQUIRE_ARRAY,
-                ),
-                '_shipping_method_pickup_date'               => array(
-                    'filter' => FILTER_SANITIZE_NUMBER_INT,
-                    'flags'  => FILTER_REQUIRE_ARRAY,
-                ),
-                '_shipping_method_pickup_appointment_offset' => array(
-                    'filter' => FILTER_SANITIZE_NUMBER_INT,
-                    'flags'  => FILTER_REQUIRE_ARRAY,
-                ),
-            );
-            $dslpfw_pickup_data = filter_input_array( INPUT_POST, $pickup_data_filter );
-            $pickup_location_ids = ( isset( $dslpfw_pickup_data['_shipping_method_pickup_location_id'] ) ? $dslpfw_pickup_data['_shipping_method_pickup_location_id'] : [] );
-            $pickup_dates = ( isset( $dslpfw_pickup_data['_shipping_method_pickup_date'] ) ? $dslpfw_pickup_data['_shipping_method_pickup_date'] : [] );
-            $appointment_offsets = ( isset( $dslpfw_pickup_data['_shipping_method_pickup_appointment_offset'] ) ? $dslpfw_pickup_data['_shipping_method_pickup_appointment_offset'] : [] );
+            $posted_pickup_data = dslpfw_get_checkout_package_pickup_post_data();
+            $pickup_location_ids = $posted_pickup_data['pickup_location_ids'];
+            $pickup_dates = $posted_pickup_data['pickup_dates'];
+            $appointment_offsets = $posted_pickup_data['appointment_offsets'];
             $cart_item_pickup_location_ids = array();
             if ( $local_pickup_method->dslpfw_is_per_item_selection_enabled() ) {
                 $cart_location_filter = array(
@@ -1005,6 +1012,16 @@ class DSLPFW_Local_Pickup_Woocommerce_Public {
             }
             foreach ( $local_pickup_packages as $package_id ) {
                 $error_messages = [];
+                $resolved_pickup_data = dslpfw_get_checkout_package_pickup_data( $package_id );
+                if ( !empty( $resolved_pickup_data['pickup_location_id'] ) ) {
+                    $pickup_location_ids[$package_id] = (int) $resolved_pickup_data['pickup_location_id'];
+                }
+                if ( !empty( $resolved_pickup_data['pickup_date'] ) ) {
+                    $pickup_dates[$package_id] = $resolved_pickup_data['pickup_date'];
+                }
+                if ( isset( $resolved_pickup_data['appointment_offset'] ) && '' !== $resolved_pickup_data['appointment_offset'] ) {
+                    $appointment_offsets[$package_id] = (int) $resolved_pickup_data['appointment_offset'];
+                }
                 // a pickup location has not been chosen (per-order selection mode):
                 if ( !$local_pickup_method->dslpfw_is_per_item_selection_enabled() && empty( $pickup_location_ids[$package_id] ) ) {
                     /* translators: Placeholder: %s - user assigned name for Local Pickup WooCommerce shipping method */

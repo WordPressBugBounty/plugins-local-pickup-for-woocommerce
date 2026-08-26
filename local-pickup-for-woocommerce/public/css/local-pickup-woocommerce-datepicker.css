@@ -17,7 +17,7 @@
 .ui-widget-header .ui-icon {background-image: url(../images/icons/datepicker-next.svg);background-position: 0;background-size: 30px;width: 30px;height: 30px;}
 .ui-datepicker .ui-datepicker-title select{font-size: 14px;padding: 5px;}
 .pickup-location-calendar .dslpfw-pickup-location-appointment-date{padding-right: 40px;width: 100%;}
-.pickup-location-calendar .ui-datepicker-trigger{position: absolute;width: 25px;height: 25px;cursor: pointer;font-size: 0;right: 15px;top: 26%;background-color: transparent !important;border: 0;outline: 0;box-shadow: none;}
+.pickup-location-calendar .ui-datepicker-trigger{position: absolute;width: 25px;height: 25px;cursor: pointer;font-size: 0;right: 15px;top: 50%;background-color: transparent !important;border: 0;outline: 0;box-shadow: none;}
 .pickup-location-calendar .ui-datepicker-trigger::before{content: '';position: absolute;top: 0;right: 0;background-image: url(../images/icons/datepicker-calender-icon.svg);background-position: 0;background-size: 25px;width: 25px;height: 25px;}
 .ui-widget-content .ui-datepicker-today .ui-state-default{font-weight: 700;}
 

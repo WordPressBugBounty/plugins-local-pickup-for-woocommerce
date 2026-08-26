@@ -278,33 +278,11 @@ class DSLPFW_Local_Pickup_WooCommerce_Order_Items {
 	 */
 	public function dslpfw_link_order_line_item_to_package( $order_item, $cart_item_key ) {
 
-        $filter = array( 
-            'dslpfw_pickup_items' => array(	
-                'filter'  => array( FILTER_SANITIZE_FULL_SPECIAL_CHARS ),
-                'flags'   => FILTER_REQUIRE_ARRAY
-            )
-        );
-        $cart_data = filter_input_array( INPUT_POST, $filter );
+		$cart_item_keys = dslpfw_get_checkout_pickup_items_cart_package_map();
 
-		if ( ! empty( $cart_data['dslpfw_pickup_items'] ) && is_array( $cart_data['dslpfw_pickup_items'] ) ) {
-
-			$cart_item_keys = array();
-
-			foreach ( $cart_data['dslpfw_pickup_items'] as $package_key => $item_keys ) {
-
-				// we always ensure this is an array
-				$item_keys = explode( ',', $item_keys );
-
-				foreach ( $item_keys as $item_key ) {
-					// prefixing the package key with a string is a conservative workaround to prevent index oddities with index key 0 and data type handling in PHP (so we are sure these are strings now)
-					$cart_item_keys[ trim( $item_key ) ] = "package_{$package_key}";
-				}
-			}
-
-			if ( isset( $cart_item_keys[ $cart_item_key ] ) ) {
-				// this sets the meta value as "package_{$package_key}"
-				$order_item->update_meta_data( $this->dslpfw_pickup_package_key_meta, $cart_item_keys[ $cart_item_key ] );
-			}
+		if ( isset( $cart_item_keys[ $cart_item_key ] ) ) {
+			// this sets the meta value as "package_{$package_key}"
+			$order_item->update_meta_data( $this->dslpfw_pickup_package_key_meta, $cart_item_keys[ $cart_item_key ] );
 		}
 	}
 
@@ -325,36 +303,27 @@ class DSLPFW_Local_Pickup_WooCommerce_Order_Items {
 	 */
 	public function dslpfw_set_order_shipping_item_pickup_data( $shipping_item, $package_key ) {
 
-        $filter = array( 
-            '_shipping_method_pickup_location_id' => array(	
-                'filter'  => array( FILTER_SANITIZE_FULL_SPECIAL_CHARS ),
-                'flags'   => FILTER_REQUIRE_ARRAY
-            ),
-            '_shipping_method_pickup_date' => array(	
-                'filter'  => array( FILTER_SANITIZE_FULL_SPECIAL_CHARS ),
-                'flags'   => FILTER_REQUIRE_ARRAY
-            ),
-            '_shipping_method_pickup_appointment_offset' => array(	
-                'filter'  => array( FILTER_SANITIZE_FULL_SPECIAL_CHARS ),
-                'flags'   => FILTER_REQUIRE_ARRAY
-            ),
-        );
-        $cart_data = filter_input_array( INPUT_POST, $filter );
+		if ( dslpfw_shipping_method_id() !== $shipping_item->get_method_id() ) {
+			return;
+		}
 
-		if ( isset( $cart_data['_shipping_method_pickup_location_id'][ $package_key ] ) ) {
+		$checkout_pickup_data = dslpfw_get_checkout_package_pickup_data( $package_key );
+		$pickup_location_id   = ! empty( $checkout_pickup_data['pickup_location_id'] ) ? (int) $checkout_pickup_data['pickup_location_id'] : 0;
 
-			$pickup_location = dslpfw_get_pickup_location( $cart_data['_shipping_method_pickup_location_id'][ $package_key ] );
+		if ( $pickup_location_id > 0 ) {
+
+			$pickup_location = dslpfw_get_pickup_location( $pickup_location_id );
 
 			if ( $pickup_location && $pickup_location->get_id() > 0 && $this->set_order_item_pickup_location( $shipping_item, $pickup_location ) ) {
 
 				// prefixing the package key with a string is a conservative workaround to prevent index oddities with index key 0 and data type handling in PHP (so we are sure these are strings now)
 				$shipping_item->update_meta_data( $this->dslpfw_pickup_package_key_meta, "package_{$package_key}" );
 
-				$pickup_date = isset( $cart_data['_shipping_method_pickup_date'][ $package_key ] ) ? trim( $cart_data['_shipping_method_pickup_date'][ $package_key ] ) : '';
+				$pickup_date = ! empty( $checkout_pickup_data['pickup_date'] ) ? trim( $checkout_pickup_data['pickup_date'] ) : '';
 
 				if ( $pickup_date && 'disabled' !== dslpfw_appointments_mode() ) {
 
-					$appointment_offset  = isset( $cart_data['_shipping_method_pickup_appointment_offset'][ $package_key ] ) ? (int) $cart_data['_shipping_method_pickup_appointment_offset'][ $package_key ] : 0;
+					$appointment_offset  = isset( $checkout_pickup_data['appointment_offset'] ) && '' !== $checkout_pickup_data['appointment_offset'] ? (int) $checkout_pickup_data['appointment_offset'] : 0;
 					$is_anytime_duration = dslpfw_shipping_method()->is_anytime_appointments_enabled();
 
 					try {

@@ -134,6 +134,10 @@ if ( !class_exists( 'DSLPFW_Local_Pickup_Woocommerce' ) ) {
             add_action( 'dslpfw_wc_shipping_ds_local_pickup_init', [$this, 'dslpfw_set_shipping_method'] );
             // HPOS & Block Cart/Checkout Compatibility declare
             add_action( 'before_woocommerce_init', [$this, 'dslpfw_handle_features_compatibility'] );
+            // Cart & Checkout Blocks integration — register hooks early; class loads when WC Blocks is ready.
+            add_action( 'woocommerce_blocks_loaded', [$this, 'dslpfw_register_blocks_store_api'] );
+            add_action( 'woocommerce_blocks_cart_block_registration', [$this, 'dslpfw_register_blocks_integration'] );
+            add_action( 'woocommerce_blocks_checkout_block_registration', [$this, 'dslpfw_register_blocks_integration'] );
             // Fixes for #104808 ticket issue
             add_action( 'init', [$this, 'dslpfw_init_plugin'], 15 );
             // Wizard Start
@@ -711,7 +715,48 @@ if ( !class_exists( 'DSLPFW_Local_Pickup_Woocommerce' ) ) {
                 return;
             }
             FeaturesUtil::declare_compatibility( 'custom_order_tables', DSLPFW_PLUGIN_BASENAME, true );
-            FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', DSLPFW_PLUGIN_BASENAME, false );
+            FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', DSLPFW_PLUGIN_BASENAME, true );
+        }
+
+        /**
+         * Load Cart/Checkout Blocks class and register Store API endpoints.
+         *
+         * @since 1.2.1
+         */
+        public function dslpfw_register_blocks_store_api() {
+            $this->dslpfw_include_blocks_class();
+            if ( class_exists( 'DSLPFW_Local_Pickup_WooCommerce_Blocks' ) ) {
+                DSLPFW_Local_Pickup_WooCommerce_Blocks::register_store_api_and_ajax();
+            }
+        }
+
+        /**
+         * Register the Blocks IntegrationInterface instance with Cart/Checkout.
+         *
+         * @since 1.2.1
+         *
+         * @param object $registry Integration registry from WooCommerce Blocks.
+         */
+        public function dslpfw_register_blocks_integration( $registry ) {
+            $this->dslpfw_include_blocks_class();
+            if ( class_exists( 'DSLPFW_Local_Pickup_WooCommerce_Blocks' ) && is_object( $registry ) && method_exists( $registry, 'register' ) ) {
+                $registry->register( new DSLPFW_Local_Pickup_WooCommerce_Blocks() );
+            }
+        }
+
+        /**
+         * Include the blocks integration class once WooCommerce Blocks interfaces exist.
+         *
+         * @since 1.2.1
+         */
+        private function dslpfw_include_blocks_class() {
+            if ( class_exists( 'DSLPFW_Local_Pickup_WooCommerce_Blocks', false ) ) {
+                return;
+            }
+            if ( !interface_exists( '\\Automattic\\WooCommerce\\Blocks\\Integrations\\IntegrationInterface' ) ) {
+                return;
+            }
+            require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-local-pickup-woocommerce-blocks.php';
         }
 
         /**
